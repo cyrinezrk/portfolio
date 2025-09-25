@@ -1,0 +1,113 @@
+/* Base styles */
+.App {
+  background-color: #DEC4EB;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 10px 30px;
+  border-radius: 0 0 20px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.App-logo {
+  width: 50px;
+  cursor: pointer;
+  flex-shrink: 0; /* Ne pas réduire */
+}
+
+/* Nav prend l'espace restant à droite mais limité en largeur */
+.nav_words {
+  flex-grow: 1;            /* prend tout l'espace restant */
+  max-width: 100%;    
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /* centre les items horizontalement */
+  gap: 30px;
+  white-space: nowrap;     /* pas de retour à la ligne */
+  overflow: hidden;
+  flex-shrink: 1;
+  transition: max-width 0.3s ease;
+}
+
+.nav_words p {
+  cursor: pointer;
+  color: white;
+  width: 60px;
+  font-weight: 500;
+  padding: 12px;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, font-size 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.nav_words p:hover {
+  background-color: #C899DE; /* ajouté pour visibilité */
+}
+
+.nav_words p.active {
+  background-color: #C899DE; /* ajouté pour visibilité */
+}
+
+.main{
+  width: 100%;
+  margin-top: 70px;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+/* Responsive */
+
+/* Tablettes */
+@media (max-width: 900px) {
+  .App-logo {
+    width: 40px;
+  }
+  
+  .nav_words {
+    gap: 20px;
+    max-width: 100%; /* réduit la largeur max */
+  }
+
+  .nav_words p {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+}
+
+/* Téléphones */
+@media (max-width: 600px) {
+  .App-logo {
+    width: 35px;
+  }
+  
+  .nav_words {
+    gap: 15px;
+    max-width: 100%; /* prend toute la largeur dispo */
+  }
+
+  .nav_words p {
+    font-size: 0.8rem;
+    padding: 5px 8px;
+  }
+  
+  .App-header {
+    padding: 8px 15px;
+  }
+}

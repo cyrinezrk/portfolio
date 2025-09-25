@@ -1,0 +1,50 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  .relative {
+    width: 100%;
+    position: relative;
+  }
+  
+  .slide {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .slide h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .slide p {
+    margin-top: 0.5rem;
+  }
+  
+  /* Couleurs et styles spécifiques */
+  .slide1 {
+    background: linear-gradient(to bottom, #c6f6d5, #bee3f8); /* green → blue */
+  }
+  
+  .slide2 {
+    background: linear-gradient(to bottom, #4c51bf, #6b46c1); /* indigo → purple */
+    color: white;
+  }
+  
+  .slide3 {
+    background: linear-gradient(to bottom, #6b46c1, #ed64a6); /* purple → pink */
+    color: white;
+  }
+  
+  .slide4 {
+    background: linear-gradient(to bottom, #bee3f8, #c3dafe); /* blue → indigo */
+    color: black;
+  }
+  
