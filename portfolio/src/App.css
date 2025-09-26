@@ -1,113 +1,141 @@
-/* Base styles */
+
 .App {
   background-color: #DEC4EB;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  min-height: 100vh;
 }
 
 .App-header {
   display: flex;
-  flex-direction: row;
   align-items: center;
   width: 100%;
-  padding: 10px 30px;
+  padding: 12px 30px;
   border-radius: 0 0 20px 20px;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 1000;
   box-sizing: border-box;
 }
 
+.hero {
+  background: linear-gradient(to bottom, #8E44AD, #DEC4EB);;
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+.hero.hero-projet {
+  height: 30vh;
+}
+.reseaux {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.reseaux li a {
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.reseaux li a:hover {
+  transform: scale(1.1);
+}
+@media (max-width: 600px) {
+  .reseaux {
+    display: none;
+  }
+}
+
+.social-icon {
+  width: 40px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.social-icon:hover{
+  transform: rotate(15deg);
+  filter: drop-shadow(0 0 10px rgba(255, 192, 203, 0.7));
+}
 .App-logo {
   width: 50px;
   cursor: pointer;
-  flex-shrink: 0; /* Ne pas réduire */
 }
 
-/* Nav prend l'espace restant à droite mais limité en largeur */
 .nav_words {
-  flex-grow: 1;            /* prend tout l'espace restant */
-  max-width: 100%;    
+  flex-grow: 1;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center; /* centre les items horizontalement */
   gap: 30px;
-  white-space: nowrap;     /* pas de retour à la ligne */
-  overflow: hidden;
-  flex-shrink: 1;
-  transition: max-width 0.3s ease;
+  justify-content: center;
 }
 
 .nav_words p {
   cursor: pointer;
-  color: white;
-  width: 60px;
-  font-weight: 500;
-  padding: 12px;
-  border-radius: 20px;
-  transition: background-color 0.3s ease, font-size 0.3s ease;
-  white-space: nowrap;
-  flex-shrink: 0;
-  text-align: center;
+  padding: 10px 15px;
+  border-radius: 25px;
+  background-color: transparent;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.nav_words p:hover {
-  background-color: #C899DE; /* ajouté pour visibilité */
-}
-
+.nav_words p:hover,
 .nav_words p.active {
-  background-color: #C899DE; /* ajouté pour visibilité */
+  background-color: #C899DE;
+  transform: scale(1.05);
 }
 
-.main{
+.nav_words p:focus {
+  outline: 2px solid #fff;
+}
+
+.main {
   width: 100%;
-  margin-top: 70px;
+  height: 100%;
+  padding-bottom:80px;
   display: flex;
-  align-self: center;
   justify-content: center;
 }
-/* Responsive */
-
-/* Tablettes */
+.who {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.who p{
+  margin: 0;
+}
 @media (max-width: 900px) {
   .App-logo {
     width: 40px;
   }
-  
   .nav_words {
     gap: 20px;
-    max-width: 100%; /* réduit la largeur max */
-  }
-
-  .nav_words p {
-    font-size: 0.9rem;
-    padding: 6px 10px;
   }
 }
 
-/* Téléphones */
 @media (max-width: 600px) {
   .App-logo {
     width: 35px;
   }
-  
   .nav_words {
     gap: 15px;
-    max-width: 100%; /* prend toute la largeur dispo */
   }
+}
 
-  .nav_words p {
-    font-size: 0.8rem;
-    padding: 5px 8px;
+@media (max-width: 600px) {
+  .App-logo {
+    width: 35px;
   }
-  
-  .App-header {
-    padding: 8px 15px;
+  .nav_words {
+    gap: 15px;
   }
 }

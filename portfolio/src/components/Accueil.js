@@ -5,10 +5,10 @@ import ExperienceSlider from './slider';
 function Accueil() {
   return (
     <section className="accueil">
+  
       <div className="accueil-grid">
         <div className='pro'>
           <div className='Parcours'>
-            {/* Section Formations */}
             <div className="Formation">
               <h1>Formations</h1>
               <ul className="formation-list">
@@ -43,7 +43,6 @@ function Accueil() {
               </ul>
             </div>
 
-            {/* Section Expériences */}
             <div className="Alternance">
               <h1>Expériences</h1>
               <ul className="experience-list">
@@ -69,6 +68,7 @@ function Accueil() {
             </div>
           </div>
           <div className='Compétences'>
+            <h1>Compétences</h1>
             <ExperienceSlider/>
           </div>
           </div>
@@ -96,7 +96,7 @@ function Accueil() {
               </li>
               <li>
                 <img src="/chef.png" alt="chef" className="hobby" />
-                <p> L'un de mes passe temps préférée est faire de bon petit plat pour mes p</p>
+                <p> L'un de mes passe temps préférée est faire de bon petit plat pour mes proches.</p>
               </li>
             </ul>
           </div>

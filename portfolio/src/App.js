@@ -3,37 +3,79 @@ import React, { useState } from 'react';
 import Accueil from './components/Accueil';
 import Projet from './components/Projet';
 import Contact from './components/Contact';
+import RandomPhotos from "./components/random";
+
 
 function App() {
-    const [activePage, setActivePage] = useState('Accueil');
+  const [activePage, setActivePage] = useState('Accueil');
 
   const handleNavClick = (page) => {
     setActivePage(page);
   };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img
-          src="/logo.png"
-          className="App-logo"
-          alt="logo"
-          onClick={() => handleNavClick('Accueil')} // <-- ici la correction
-        />
-        <div className="nav_words">
-          <p className={activePage === 'Accueil' ? 'active' : ''}
-            onClick={() => handleNavClick('Accueil')}>Accueil</p>
-          <p className={activePage === 'Projet' ? 'active' : ''}
-            onClick={() => handleNavClick('Projet')}>Projet</p>
-          <p className={activePage === 'Contact' ? 'active' : ''}
-            onClick={() => handleNavClick('Contact')}>Contact</p>
+      <RandomPhotos />
+      <div className={`hero ${activePage === 'Projet' ? 'hero-projet' : ''}`}>
+        <header className="App-header">
+          <img
+            src="/logo.png"
+            className="App-logo"
+            alt="Logo Cyrine Zarkouna"
+            onClick={() => handleNavClick('Accueil')}
+          />
+          <nav className="nav_words">
+            {['Accueil', 'Projet', 'Contact'].map((page) => (
+              <p
+                key={page}
+                className={activePage === page ? 'active' : ''}
+                onClick={() => handleNavClick(page)}
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && handleNavClick(page)}
+              >
+                {page}
+              </p>
+            ))}
+          </nav>
+        </header>
+        <div className='who'>
+            <h1> Zarkouna Cyrine</h1>
+            <p>apprentie développeuse web </p>
         </div>
-      </header>
+        <ul className="reseaux">
+          <li>
+            <a
+              href="https://www.linkedin.com/in/cyrine-zarkouna-6022301b1"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <img src="/linkedin.png" className="social-icon" alt="LinkedIn" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.instagram.com/cyrine_zrk"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <img src="/instagram.png" className="social-icon" alt="Instagram" />
+            </a>
+          </li>
+          <li>
+            <a href="mailto:cyrine@example.com" aria-label="Email">
+              <img src="/email.png" className="social-icon" alt="Email" />
+            </a>
+          </li>
+        </ul>
+      </div>
 
-      <div className='main'>
+      <main className="main">
         {activePage === 'Accueil' && <Accueil />}
         {activePage === 'Projet' && <Projet />}
         {activePage === 'Contact' && <Contact />}
-      </div>
+      </main>
     </div>
   );
 }
