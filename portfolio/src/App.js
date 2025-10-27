@@ -29,16 +29,16 @@ function App() {
   return (
     <div className="App">
       <img 
-        src="/violet.jpg" 
+        src={`${process.env.PUBLIC_URL}/violet.jpg`} 
         alt="Background" 
         className="App-background" 
       />
-      <RandomPhotos />
+      {/* <RandomPhotos /> */}
 
       <div className={`hero ${activePage === 'Projet' ? 'hero-projet' : ''}`}>
         <header className={`App-header ${scrolled ? 'scrolled' : ''}`}>
           <img
-            src="/logo.png"
+            src={`${process.env.PUBLIC_URL}/logo.png`}
             className="App-logo"
             alt="Logo Cyrine Zarkouna"
             onClick={() => handleNavClick('Accueil')}
@@ -71,7 +71,7 @@ function App() {
               rel="noopener noreferrer"
               aria-label="LinkedIn"
             >
-              <img src="/linkedin.png" className="social-icon" alt="LinkedIn" />
+              <img src={`${process.env.PUBLIC_URL}/linkedin.png`} className="social-icon" alt="LinkedIn" />
             </a>
           </li>
           <li>
@@ -81,21 +81,21 @@ function App() {
               rel="noopener noreferrer"
               aria-label="Instagram"
             >
-              <img src="/instagram.png" className="social-icon" alt="Instagram" />
+              <img src={`${process.env.PUBLIC_URL}/instagram.png`} className="social-icon" alt="Instagram" />
             </a>
           </li>
           <li>
             <a href="mailto:cyrine@example.com" aria-label="Email">
-              <img src="/email.png" className="social-icon" alt="Email" />
+              <img src={`${process.env.PUBLIC_URL}/email.png`} className="social-icon" alt="Email" />
             </a>
           </li>
           <li>
             <a
-              href="/CVCyrine.pdf"
+              href={`${process.env.PUBLIC_URL}/CVCyrine.pdf`}
               download="Cyrine_Zarkouna_CV.pdf"
               aria-label="Télécharger mon CV"
             >
-              <img src="/cv.png" className="social-icon" alt="cv" />
+              <img src={`${process.env.PUBLIC_URL}/cv.png`} className="social-icon" alt="cv" />
             </a>
           </li>
         </ul>
