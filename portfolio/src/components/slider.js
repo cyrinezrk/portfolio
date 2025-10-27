@@ -6,16 +6,16 @@ import "swiper/css";
 
 export default function CompetencesSlider() {
   const competences = [
-    { href: "https://fr.react.dev/", img: "/logo192.png", alt: "react", name: "React" },
-    { href: "https://www.python.org/", img: "/pythoned.png", alt: "python", name: "Python" },
-    { href: "https://bubble.io/", img: "/bubble.png", alt: "bubble", name: "Bubble" },
-    { href: "", img: "/JS.png", alt: "js", name: "JavaScript" },
-    { href: "", img: "/html.png", alt: "html", name: "HTML" },
-    { href: "https://www.shopify.com/fr", img: "/shopify.png", alt: "shopify", name: "Shopify" },
-    { href: "https://trello.com/home", img: "/trello.png", alt: "trello", name: "Trello" },
-    { href: "https://www.figma.com/fr-fr/", img: "/Figma.png", alt: "figma", name: "Figma" },
-    { href: "https://workspace.google.com/intl/fr/", img: "/google.png", alt: "google", name: "Google Workspace" },
-    { href: "https://www.java.com/fr/", img: "/java.png", alt: "java", name: "Java" },
+    { href: "https://fr.react.dev/", img: "./logo192.png", alt: "react", name: "React" },
+    { href: "https://www.python.org/", img: "./pythoned.png", alt: "python", name: "Python" },
+    { href: "https://bubble.io/", img: "./bubble.png", alt: "bubble", name: "Bubble" },
+    { href: "", img: "./JS.png", alt: "js", name: "JavaScript" },
+    { href: "", img: "./html.png", alt: "html", name: "HTML" },
+    { href: "https://www.shopify.com/fr", img: "./shopify.png", alt: "shopify", name: "Shopify" },
+    { href: "https://trello.com/home", img: "./trello.png", alt: "trello", name: "Trello" },
+    { href: "https://www.figma.com/fr-fr/", img: "./Figma.png", alt: "figma", name: "Figma" },
+    { href: "https://workspace.google.com/intl/fr/", img: "./google.png", alt: "google", name: "Google Workspace" },
+    { href: "https://www.java.com/fr/", img: "./java.png", alt: "java", name: "Java" },
 
   ];
 
