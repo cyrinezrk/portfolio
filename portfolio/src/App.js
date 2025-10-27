@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Accueil from './components/Accueil';
 import Projet from './components/Projet';
 import Contact from './components/Contact';
-import RandomPhotos from "./components/random";
+// import RandomPhotos from "./components/random";
 
 function App() {
   const [activePage, setActivePage] = useState('Accueil');
@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <img 
-        src='./violet.jpg' 
+        src={`${process.env.PUBLIC_URL}/violet.jpg`}
         alt="Background" 
         className="App-background" 
       />
@@ -38,7 +38,7 @@ function App() {
       <div className={`hero ${activePage === 'Projet' ? 'hero-projet' : ''}`}>
         <header className={`App-header ${scrolled ? 'scrolled' : ''}`}>
           <img
-            src={`${process.env.PUBLIC_URL}./logo.png`}
+            src={`${process.env.PUBLIC_URL}/logo.png`}
             className="App-logo"
             alt="Logo Cyrine Zarkouna"
             onClick={() => handleNavClick('Accueil')}

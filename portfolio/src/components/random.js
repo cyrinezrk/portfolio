@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./random.css";
 
 const photos = [
-  { url: "/poulep/pouleprrr.png", link: "https://youtu.be/hvL1339luv0?si=XZMtD5WVGv-x9YcQ" },
-  { url: "/poulep/poulup.png", link: "https://youtu.be/IxX_QHay02M?si=sPzDcuIMXw7ZZ7sF" },
-  { url: "/poulep/pouulep.png", link: "https://youtu.be/ptnRdZeNr4g?si=JrUuxEYHFbnsBRw_" },
-  { url: "/poulep/prrr.png", link: "https://youtu.be/AtPrjYp75uA?si=ei1mDO60wUYdQAzj" }
+  { url: `${process.env.PUBLIC_URL}/poulep/pouleprrr.png`, link: "https://youtu.be/hvL1339luv0?si=XZMtD5WVGv-x9YcQ" },
+  { url: `${process.env.PUBLIC_URL}/poulep/poulup.png`, link: "https://youtu.be/IxX_QHay02M?si=sPzDcuIMXw7ZZ7sF" },
+  { url: `${process.env.PUBLIC_URL}/poulep/pouulep.png`, link: "https://youtu.be/ptnRdZeNr4g?si=JrUuxEYHFbnsBRw_" },
+  { url: `${process.env.PUBLIC_URL}/poulep/prrr.png`, link: "https://youtu.be/AtPrjYp75uA?si=ei1mDO60wUYdQAzj" }
 ];
 
 

@@ -38,7 +38,7 @@ function ContactContent({ state, handleSubmit }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src='./linkedin2.png' className="sociallinkedin" alt="LinkedIn" />
+            <img src={`${process.env.PUBLIC_URL}/linkedin2.png`} className="sociallinkedin" alt="LinkedIn" />
           </a>
           <a
             href="https://www.instagram.com/cyrine_zrk"
@@ -46,7 +46,7 @@ function ContactContent({ state, handleSubmit }) {
             rel="noopener noreferrer"
             aria-label="Instagram"
           >
-            <img src='./instagram2.png' className="social-icon" alt="Instagram" />
+            <img src={`${process.env.PUBLIC_URL}/instagram2.png`} className="social-icon" alt="Instagram" />
           </a>
         </div>
       </div>

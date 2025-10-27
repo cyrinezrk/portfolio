@@ -6,17 +6,16 @@ import "swiper/css";
 
 export default function CompetencesSlider() {
   const competences = [
-    { href: "https://fr.react.dev/", img: "./logo192.png", alt: "react", name: "React" },
-    { href: "https://www.python.org/", img: "./pythoned.png", alt: "python", name: "Python" },
-    { href: "https://bubble.io/", img: "./bubble.png", alt: "bubble", name: "Bubble" },
-    { href: "", img: "./JS.png", alt: "js", name: "JavaScript" },
-    { href: "", img: "./html.png", alt: "html", name: "HTML" },
-    { href: "https://www.shopify.com/fr", img: "./shopify.png", alt: "shopify", name: "Shopify" },
-    { href: "https://trello.com/home", img: "./trello.png", alt: "trello", name: "Trello" },
-    { href: "https://www.figma.com/fr-fr/", img: "./Figma.png", alt: "figma", name: "Figma" },
-    { href: "https://workspace.google.com/intl/fr/", img: "./google.png", alt: "google", name: "Google Workspace" },
-    { href: "https://www.java.com/fr/", img: "./java.png", alt: "java", name: "Java" },
-
+    { href: "https://fr.react.dev/", img: `${process.env.PUBLIC_URL}/logo192.png`, alt: "react", name: "React" },
+    { href: "https://www.python.org/", img: `${process.env.PUBLIC_URL}/pythoned.png`, alt: "python", name: "Python" },
+    { href: "https://bubble.io/", img: `${process.env.PUBLIC_URL}/bubble.png`, alt: "bubble", name: "Bubble" },
+    { href: "", img: `${process.env.PUBLIC_URL}/JS.png`, alt: "js", name: "JavaScript" },
+    { href: "", img: `${process.env.PUBLIC_URL}/html.png`, alt: "html", name: "HTML" },
+    { href: "https://www.shopify.com/fr", img: `${process.env.PUBLIC_URL}/shopify.png`, alt: "shopify", name: "Shopify" },
+    { href: "https://trello.com/home", img: `${process.env.PUBLIC_URL}/trello.png`, alt: "trello", name: "Trello" },
+    { href: "https://www.figma.com/fr-fr/", img: `${process.env.PUBLIC_URL}/Figma.png`, alt: "figma", name: "Figma" },
+    { href: "https://workspace.google.com/intl/fr/", img: `${process.env.PUBLIC_URL}/google.png`, alt: "google", name: "Google Workspace" },
+    { href: "https://www.java.com/fr/", img: `${process.env.PUBLIC_URL}/java.png`, alt: "java", name: "Java" },
   ];
 
   return (
