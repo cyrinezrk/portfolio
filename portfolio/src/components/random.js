@@ -8,12 +8,13 @@ const photos = [
   { url: "/poulep/prrr.png", link: "https://youtu.be/AtPrjYp75uA?si=ei1mDO60wUYdQAzj" }
 ];
 
+
 const MARGIN_TOP = 150;
 const MARGIN_BOTTOM = 50;
 const MARGIN_SIDE = 20;
 
 function getRandomEdgePosition(size) {
-  const edge = Math.floor(Math.random() * 4); 
+  const edge = Math.floor(Math.random() * 4); //calcule position aléatoire le long du bord 
   switch (edge) {
     case 0: 
       return { top: MARGIN_TOP, left: MARGIN_SIDE + Math.random() * (window.innerWidth - size - MARGIN_SIDE * 2) };
@@ -28,10 +29,10 @@ function getRandomEdgePosition(size) {
   }
 }
 
-export default function RandomPhotos() {
+export default function RandomPhotos() { //etat qui contient image(taille) liens positions 
   const [currentPhoto, setCurrentPhoto] = useState(null);
 
-  useEffect(() => {
+  useEffect(() => { //toute les 3s, selection img aléatoire, position aléatoire sur un bord 
     const size = 100; 
     const interval = setInterval(() => {
       const photo = photos[Math.floor(Math.random() * photos.length)];
@@ -42,12 +43,12 @@ export default function RandomPhotos() {
         position,
         size
       });
-    }, 2000); 
+    }, 3000); 
 
     return () => clearInterval(interval);
   }, []);
 
-  if (!currentPhoto) return null;
+  if (!currentPhoto) return null; //renvoie rien si pas de choix 
 
   return (
     <img

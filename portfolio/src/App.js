@@ -1,23 +1,42 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Accueil from './components/Accueil';
 import Projet from './components/Projet';
 import Contact from './components/Contact';
 import RandomPhotos from "./components/random";
 
-
 function App() {
   const [activePage, setActivePage] = useState('Accueil');
+  const [scrolled, setScrolled] = useState(false);
 
   const handleNavClick = (page) => {
     setActivePage(page);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="App">
+      <img 
+        src="/violet.jpg" 
+        alt="Background" 
+        className="App-background" 
+      />
       <RandomPhotos />
+
       <div className={`hero ${activePage === 'Projet' ? 'hero-projet' : ''}`}>
-        <header className="App-header">
+        <header className={`App-header ${scrolled ? 'scrolled' : ''}`}>
           <img
             src="/logo.png"
             className="App-logo"
@@ -38,10 +57,12 @@ function App() {
             ))}
           </nav>
         </header>
+
         <div className='who'>
-            <h1> Zarkouna Cyrine</h1>
-            <p>apprentie développeuse web </p>
+          <h1>Zarkouna Cyrine</h1>
+          <p>Apprentie Chef de Projet Techniques</p>
         </div>
+
         <ul className="reseaux">
           <li>
             <a
@@ -66,6 +87,15 @@ function App() {
           <li>
             <a href="mailto:cyrine@example.com" aria-label="Email">
               <img src="/email.png" className="social-icon" alt="Email" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="/CVCyrine.pdf"
+              download="Cyrine_Zarkouna_CV.pdf"
+              aria-label="Télécharger mon CV"
+            >
+              <img src="/cv.png" className="social-icon" alt="cv" />
             </a>
           </li>
         </ul>

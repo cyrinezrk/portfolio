@@ -15,6 +15,8 @@ export default function CompetencesSlider() {
     { href: "https://trello.com/home", img: "/trello.png", alt: "trello", name: "Trello" },
     { href: "https://www.figma.com/fr-fr/", img: "/Figma.png", alt: "figma", name: "Figma" },
     { href: "https://workspace.google.com/intl/fr/", img: "/google.png", alt: "google", name: "Google Workspace" },
+    { href: "https://www.java.com/fr/", img: "/java.png", alt: "java", name: "Java" },
+
   ];
 
   return (

@@ -1,11 +1,13 @@
 import React from 'react';
 import './Accueil.css';
 import ExperienceSlider from './slider';
+import ContactForm from "./Contact";
 
 function Accueil() {
   return (
+    <>
+    <div className='info'>
     <section className="accueil">
-  
       <div className="accueil-grid">
         <div className='pro'>
           <div className='Parcours'>
@@ -69,41 +71,41 @@ function Accueil() {
           </div>
           <div className='Compétences'>
             <h1>Compétences</h1>
-            <ExperienceSlider/>
+            <ExperienceSlider />
           </div>
+        </div>
+        <div className='moi'>
+          <div className='cyrine'>
+            <h1>Zarkouna Cyrine</h1>
+            <h2>21</h2>
           </div>
-          <div className='moi'>
-            <div className='cyrine'>
-              <h1>Zarkouna Cyrine</h1>
-              <h2>21</h2>
-            </div>     
-            <ul className='me'>
-              <li>
-                <img src="/bac.png" alt="bac" className="hobby" />
-                <p> Baccalauréat Générale : Spécialité Maths, Physique-Chimie, Numérique et Science de l'Informatique</p>
-              </li>
-              <li>
-                <img src="/theatre.png" alt="theatre" className="hobby" />
-                <p> 6 année de Théatre, avec différent professeur dont Mariem Ben Chaabane</p>
-              </li>
-              <li>
-                <img src="/chant.png" alt="chant" className="hobby" />
-                <p>7 année de Chant, avec différent professeur dont Ameni Ben Tara</p>
-              </li>
-              <li>
-                <img src="/rugby.png" alt="rugby" className="hobby" />
-                <p> Durant mes années de collège, j'ai exercé ' ans de Rugby.</p>
-              </li>
-              <li>
-                <img src="/chef.png" alt="chef" className="hobby" />
-                <p> L'un de mes passe temps préférée est faire de bon petit plat pour mes proches.</p>
-              </li>
-            </ul>
-          </div>
-        
-        
+          <ul className='me'>
+            <li>
+              <img src="/bac.png" alt="bac" className="hobby" />
+              <p> Baccalauréat Générale : Spécialité Maths, Physique-Chimie, Numérique et Science de l'Informatique</p>
+            </li>
+            <li>
+              <img src="/theatre.png" alt="theatre" className="hobby" />
+              <p> 6 année de Théatre, avec différent professeur dont Mariem Ben Chaabane</p>
+            </li>
+            <li>
+              <img src="/chant.png" alt="chant" className="hobby" />
+              <p>7 année de Chant, avec différent professeur dont Ameni Ben Tara</p>
+            </li>
+
+            <li>
+              <img src="/chef.png" alt="chef" className="hobby" />
+              <p> L'un de mes passe temps préférée est faire de bon petit plat pour mes proches.</p>
+            </li>
+          </ul>
+        </div>
+
+
       </div>
     </section>
+        <ContactForm />
+    </div>
+    </>
   );
 }
 

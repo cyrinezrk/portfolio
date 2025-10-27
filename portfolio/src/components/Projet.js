@@ -1,76 +1,90 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Projet.css";
 
 export default function Slides() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const slides = [
     {
       id: 1,
-      title: "Concerf",
-      text: "Ceci est le premier projet auquels j'ai participé durant mes études, j'en parlerais plus tard !!",
-      image: "/concerf1.png",
-    },
-    {
-      id: 2,
       title: "Locatio",
-      text: "Mon premier projet en tant qu'apprentie développeuse web",
+      text: "Notre mission était de créer un site permettant à professionnels et particuliers de proposer des produits à la location, pour quelques heures ou plusieurs mois. J’ai pris en charge la partie administration ainsi que le développement des pages listant les produits disponibles...",
       image: "/locatio.png",
       link: "",
     },
     {
-      id: 3,
+      id: 2,
       title: "Chat GPT x Majoli",
-      text: "Mon premier projet seul avec de l'intégration IA.",
+      text: "Durant mon alternance, j’ai travaillé à améliorer le site de l’entreprise en automatisant la création des descriptions...",
       image: "majolichat.png",
       link: "",
     },
     {
-      id: 4,
+      id: 3,
       title: "La chtite Marseillaise",
-      text: "Un des projets que j'ai pu mener durant mon alternance, un site web pour une designeuse graphique.",
+      text: "J’ai participé à la création du site de 'La Chtite Marseillaise', une artiste locale renommée...",
       image: "lachtite.png",
       link: "https://lachtitemarseillaise.com/",
     },
     {
-      id: 5,
-      title: "PAt VTC",
-      text: "Un site que j'ai développé en entreprise pour un chauffeur vtc sa propre plateforme de réservtion.",
+      id: 4,
+      title: "Pat VTC",
+      text: "J’ai travaillé sur 'Pat VTC', un site web dédié à un service de VTC permettant aux utilisateurs de sélectionner une adresse...",
       image: "/patvtc.png",
       link: "https://patvtc.fr/",
     },
     {
-      id: 6,
+      id: 5,
       title: "CogSpace",
-      text: "Un projet au sein de l'institut g4 pour commencer l'année en tant que chef de projet, je me suis bcp investi dans le développement du backoffice.",
+      text: "Lors d’un projet scolaire, j’ai participé à la création d’un site web de base de connaissances...",
       image: "/cogspace.png",
       link: "",
     },
     {
-      id: 7,
+      id: 6,
       title: "EcoSphere",
-      text: "Projet de Cercle de Projet.",
+      text: "Lors d’une semaine intensive à l’Institut G4, nous avons travaillé sur une plateforme de sensibilisation écologique...",
       image: "ecoservice.png",
       link: "",
     },
     {
-      id: 8,
+      id: 7,
       title: "We Are Jolies",
-      text: "Travail en interne mais voci ce que j'ai appris.",
+      text: "Lors d’un projet scolaire, j’ai participé à la création d’un site web de base de connaissances...",
       image: "/waj2.png",
       link: "https://wearejolies.com/",
     },
     {
-      id: 9,
+      id: 8,
       title: "Circle",
-      text: "Ecommerce ecologique, complet.",
+      text: "Pour ce projet, nous avons créé un site e-commerce pour une marque de produits écoresponsables...",
       image: "/circle.png",
       link: "",
     },
-    {id: 10,
-      title:"Hangman",
-      text: "Premier projet en Piscine Python au sein d'épitech",
+    {
+      id: 9,
+      title: "Hangman",
+      text: "À mon entrée à l’école Epitech, j’ai intégré une phase intensive appelée la piscine...",
       image: "/hangman.png",
       link: "https://github.com/nnevvw/hangman",
-    }
+    },
   ];
 
   return (
@@ -91,6 +105,13 @@ export default function Slides() {
           </div>
         </div>
       ))}
+
+      {/* 🔼 Bouton scroll to top */}
+      {showScrollTop && (
+        <button className="scroll-to-top" onClick={scrollToTop}>
+          ↑
+        </button>
+      )}
     </div>
   );
 }

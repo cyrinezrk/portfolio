@@ -1,6 +1,4 @@
-
 .App {
-  background-color: #DEC4EB;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,30 +8,54 @@
   min-height: 100vh;
 }
 
+.App-background {
+  position: fixed;    
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;  
+  z-index: -1;       
+}
+
+
 .App-header {
   display: flex;
   align-items: center;
   width: 100%;
   padding: 12px 30px;
-  border-radius: 0 0 20px 20px;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
   box-sizing: border-box;
+  background-color: transparent;
+  transition: background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
 }
 
+/* Classe appliquée quand on a scrollé */
+.App-header.scrolled {
+  background-color: rgba(200, 153, 222, 0.422); 
+  backdrop-filter: blur(10px); 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);  
+}
+
+
 .hero {
-  background: linear-gradient(to bottom, #8E44AD, #DEC4EB);;
-  height: 40vh;
+  height: 50vh;
+  padding-bottom: 10px;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
+  padding-top: 90px; 
 }
+
 .hero.hero-projet {
-  height: 30vh;
+  height: 50vh;
 }
+
+
 .reseaux {
   list-style: none;
   display: flex;
@@ -54,24 +76,30 @@
 .reseaux li a:hover {
   transform: scale(1.1);
 }
+
 @media (max-width: 600px) {
   .reseaux {
     display: none;
   }
 }
 
+
 .social-icon {
   width: 40px;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
-.social-icon:hover{
+
+.social-icon:hover {
   transform: rotate(15deg);
   filter: drop-shadow(0 0 10px rgba(255, 192, 203, 0.7));
 }
+
+
 .App-logo {
   width: 50px;
   cursor: pointer;
 }
+
 
 .nav_words {
   flex-grow: 1;
@@ -82,8 +110,8 @@
 
 .nav_words p {
   cursor: pointer;
-  padding: 10px 15px;
-  border-radius: 25px;
+  padding: 5px 10px;
+  border-radius: 15px;
   background-color: transparent;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -98,36 +126,34 @@
   outline: 2px solid #fff;
 }
 
+
 .main {
   width: 100%;
   height: 100%;
-  padding-bottom:80px;
+  padding-bottom: 80px;
   display: flex;
   justify-content: center;
 }
+
+
 .who {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 40px;
 }
-.who p{
+
+.who p {
   margin: 0;
 }
+
+
 @media (max-width: 900px) {
   .App-logo {
     width: 40px;
   }
   .nav_words {
     gap: 20px;
-  }
-}
-
-@media (max-width: 600px) {
-  .App-logo {
-    width: 35px;
-  }
-  .nav_words {
-    gap: 15px;
   }
 }
 

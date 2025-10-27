@@ -7,6 +7,7 @@ html, body {
 .relative {
   width: 100%;
   position: relative;
+  height: 100vh;
 }
 
 .slide {
@@ -58,7 +59,7 @@ html, body {
   line-height: 1.6;
 }
 
-.slide1 { background: linear-gradient(to bottom, #DEC4EB, #8E44AD); }
+.slide1 { background: linear-gradient(to bottom, #5f3e72, #8E44AD); }
 .slide2 { background: linear-gradient(to bottom, #8E44AD, #6B46C1); }
 .slide3 { background: linear-gradient(to bottom, #6B46C1, #ED64A6); }
 .slide4 { background: linear-gradient(to bottom, #ED64A6, #F56565); }
@@ -67,7 +68,30 @@ html, body {
 .slide7 { background: linear-gradient(to bottom, #F6E05E, #48BB78); }
 .slide8 { background: linear-gradient(to bottom, #48BB78, #4299E1); }
 .slide9 { background: linear-gradient(to bottom, #4299E1, #2B6CB0); }
-.slide10 { background: linear-gradient(to bottom, #4299E1, #2B6CB0); }
+.slide10 { background: linear-gradient(to bottom, #2B6CB0, #326fb0); }
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: rgba(255, 255, 255, 0.45);
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.scroll-to-top:hover {
+  background-color: #8d44adb1;
+  color: white;
+  transform: scale(1.1);
+}
 
 @media (max-width: 900px) {
   .slide {
