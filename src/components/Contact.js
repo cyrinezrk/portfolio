@@ -3,18 +3,18 @@ import "./Contact.css";
 import { useForm, ValidationError } from "@formspree/react";
 
 // sous composant réutilisable
-function ContactContent({ state, handleSubmit }) {
+function ContactContent({ state, handleSubmit, text }) {
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
       <div className="nom-mail">
         <div>
           <label htmlFor="name">
-            Qui êtes-vous ? :
+            {text.nameLabel}
             <input
               id="name"
               type="text"
               name="name"
-              placeholder="Votre nom"
+              placeholder={text.namePlaceholder}
               required
             />
           </label>
@@ -25,7 +25,7 @@ function ContactContent({ state, handleSubmit }) {
               id="email"
               type="email"
               name="email"
-              placeholder="Votre email"
+              placeholder={text.emailPlaceholder}
               required
             />
           </label>
@@ -65,7 +65,7 @@ function ContactContent({ state, handleSubmit }) {
         <textarea
           id="message"
           name="message"
-          placeholder="Votre message"
+          placeholder={text.messagePlaceholder}
           required
         ></textarea>
       </label>
@@ -73,24 +73,45 @@ function ContactContent({ state, handleSubmit }) {
       <ValidationError prefix="Message" field="message" errors={state.errors} />
 
       <button type="submit" disabled={state.submitting}>
-        {state.submitting ? "Envoi..." : "Envoyer"}
+        {state.submitting ? text.sending : text.send}
       </button>
     </form>
   );
 }
 
 // --- Composant principal ---
-export default function ContactForm() {
+export default function ContactForm({ language = 'fr' }) {
   const [state, handleSubmit] = useForm("xeorobow");
+  const texts = {
+    fr: {
+      nameLabel: 'Qui êtes-vous ? :',
+      namePlaceholder: 'Votre nom',
+      emailPlaceholder: 'Votre email',
+      messagePlaceholder: 'Votre message',
+      sending: 'Envoi...',
+      send: 'Envoyer',
+      success: 'Merci !! Ton message a bien été envoyé',
+    },
+    en: {
+      nameLabel: 'Who are you? :',
+      namePlaceholder: 'Your name',
+      emailPlaceholder: 'Your email',
+      messagePlaceholder: 'Your message',
+      sending: 'Sending...',
+      send: 'Send',
+      success: 'Thank you! Your message has been sent',
+    },
+  };
+  const text = texts[language];
 
   if (state.succeeded) {
-    return <p>Merci !! Ton message a bien été envoyé </p>;
+    return <p>{text.success}</p>;
   }
 
   return (
     <div className="contact-wrapper">
       <div className="contact-container">
-        <ContactContent state={state} handleSubmit={handleSubmit} />
+        <ContactContent state={state} handleSubmit={handleSubmit} text={text} />
       </div>
     </div>
   );

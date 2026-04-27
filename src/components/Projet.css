@@ -59,6 +59,35 @@ html, body {
   line-height: 1.6;
 }
 
+.slide-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.slide-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: white;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.slide-link:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.slide-link.secondary {
+  background: rgba(0, 0, 0, 0.18);
+}
+
 .slide1 { background: linear-gradient(to bottom, #5f3e72, #8E44AD); }
 .slide2 { background: linear-gradient(to bottom, #8E44AD, #6B46C1); }
 .slide3 { background: linear-gradient(to bottom, #6B46C1, #ED64A6); }
@@ -112,6 +141,10 @@ html, body {
 
   .slide-content p {
     font-size: 1rem;
+  }
+
+  .slide-actions {
+    justify-content: center;
   }
 }
 
