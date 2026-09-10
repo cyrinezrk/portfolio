@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import useInView from "../hooks/useInView";
+import { cv } from "../data/content";
 import "./Contact.css";
 
 export default function Contact({ t, language }) {
@@ -72,8 +73,8 @@ export default function Contact({ t, language }) {
 
               <a
                 className="btn btn-ghost contact-cv"
-                href={`${process.env.PUBLIC_URL}/CVCyrine.pdf`}
-                download="Cyrine_Zarkouna_CV.pdf"
+                href={cv.href}
+                download={cv.filename}
               >
                 {t.downloadCv}
               </a>

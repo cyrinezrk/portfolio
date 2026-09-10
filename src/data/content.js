@@ -3,6 +3,13 @@
 
 const P = process.env.PUBLIC_URL;
 
+// Le CV : un seul endroit pour le fichier et le nom du téléchargement,
+// sinon les deux boutons (Nav et Contact) finissent par diverger.
+export const cv = {
+  href: `${P}/CV-Cyrine-Zarkouna.pdf`,
+  filename: "Cyrine_Zarkouna_CV.pdf",
+};
+
 export const TRACKS = {
   data: { fr: "Data", en: "Data" },
   ia: { fr: "IA", en: "AI" },

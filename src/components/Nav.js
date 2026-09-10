@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { cv } from "../data/content";
 import "./Nav.css";
 
 const SECTIONS = [
@@ -81,8 +82,8 @@ export default function Nav({ t, language, onToggleLanguage }) {
           </button>
           <a
             className="nav-cv"
-            href={`${process.env.PUBLIC_URL}/CVCyrine.pdf`}
-            download="Cyrine_Zarkouna_CV.pdf"
+            href={cv.href}
+            download={cv.filename}
           >
             CV
             <svg viewBox="0 0 16 16" aria-hidden="true">
