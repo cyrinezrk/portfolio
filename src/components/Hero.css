@@ -296,6 +296,46 @@
 }
 
 @media (max-width: 900px) {
-  .hero-scroll { display: none; }
   .blob.b3 { display: none; }
+}
+
+/* --- Téléphone ------------------------------------------------------- *
+   Une colonne étroite se lit mieux centrée : le nom, la phrase, les deux
+   boutons et les réseaux tiennent sur un axe. Les boutons prennent toute la
+   largeur, c'est ce qu'un pouce attend.
+ * ------------------------------------------------------------------- */
+
+@media (max-width: 760px) {
+  .hero-inner { text-align: center; }
+
+  .hero-title { font-size: clamp(44px, 13.5vw, 66px); margin-top: 14px; }
+  .hero-phrase { font-size: clamp(18px, 5vw, 22px); margin-top: 18px; }
+
+  .hero-lead {
+    margin-inline: auto;
+    margin-top: 16px;
+    font-size: 15.5px;
+    max-width: 34ch;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 11px;
+    margin-top: 26px;
+  }
+
+  .hero-social { justify-content: center; margin-top: 26px; }
+  .hero-social a { width: 46px; height: 46px; }
+
+  /* Deux formes suffisent : la troisième ne ferait qu'assombrir le texte. */
+  .blob.b2 { display: none; }
+  .blob.b1 { width: min(88vw, 460px); height: min(88vw, 460px); opacity: 0.6; }
+}
+
+/* La flèche de défilement reste utile sur téléphone, où une partie occupe
+   encore l'écran entier. On ne la retire que sur un écran bas, où elle
+   viendrait buter dans les réseaux sociaux. */
+@media (max-height: 700px) {
+  .hero-scroll { display: none; }
 }

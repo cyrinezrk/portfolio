@@ -52,7 +52,9 @@ export default function Nav({ t, language, onToggleLanguage }) {
           <span className="nav-mark">
             <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="" />
           </span>
-          <span className="nav-name">Cyrine&nbsp;Zarkouna</span>
+          <span className="nav-name">
+            Cyrine<span className="nav-surname">&nbsp;Zarkouna</span>
+          </span>
         </a>
 
         <nav className="nav-links" aria-label="Sections">
@@ -99,11 +101,16 @@ export default function Nav({ t, language, onToggleLanguage }) {
         </div>
       </div>
 
-      <div className="nav-sheet" hidden={!open}>
-        {SECTIONS.map(({ id, key }) => (
-          <a key={id} href={`#${id}`} onClick={go(id)}>{t[key]}</a>
-        ))}
-      </div>
+      {/* Rendu seulement quand il est ouvert. `hidden` ne suffisait pas : il
+          ne pose `display: none` que par la feuille du navigateur, qu'une
+          simple règle d'auteur annule. */}
+      {open && (
+        <div className="nav-sheet">
+          {SECTIONS.map(({ id, key }) => (
+            <a key={id} href={`#${id}`} onClick={go(id)}>{t[key]}</a>
+          ))}
+        </div>
+      )}
     </header>
   );
 }

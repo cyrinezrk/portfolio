@@ -202,12 +202,43 @@
   line-height: 1.5;
 }
 
+/* Au doigt, une pastille de compétence est une cible à viser : on lui donne
+   un peu de hauteur, sans toucher au dessin sur écran avec souris. */
+@media (pointer: coarse) {
+  .skill-group li a { padding-block: 9px; }
+}
+
 @media (max-width: 1100px) {
   .about-grid { grid-template-columns: 1fr 1fr; }
   .about-col-wide { grid-column: span 2; }
 }
 
-@media (max-width: 700px) {
-  .about-grid { grid-template-columns: 1fr; }
+/* --- Téléphone ------------------------------------------------------- */
+
+@media (max-width: 760px) {
+  .about-grid { grid-template-columns: 1fr; gap: 26px; }
   .about-col-wide { grid-column: span 1; }
+
+  .about-inner { gap: 24px; }
+  .about-head { gap: 14px; }
+  .about-lead { max-width: none; }
+
+  .entry a { padding: 12px 10px; margin-inline: -10px; gap: 12px; }
+  .entry-logo { width: 38px; height: 38px; }
+  .entry-head strong { font-size: 15.5px; }
+
+  /* Une ligne de parcours ne se déplace plus au survol : sur un écran tactile
+     le survol n'existe pas, et le décalage restait collé après un appui. */
+  .entry a:hover { transform: none; }
+
+  .skills { gap: 20px; }
+
+  .personal {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding-top: 20px;
+  }
+  .personal li { align-items: center; }
+  .personal img { width: 34px; height: 34px; }
+  .personal p { font-size: 14px; }
 }

@@ -171,19 +171,56 @@ h1, h2, h3, h4, p, li, span, strong, em, blockquote, figcaption, label, td, th {
   padding-inline: var(--gutter);
 }
 
-/* Les repères latéraux vivent dans la marge droite. Tant qu'ils sont affichés,
-   le contenu leur laisse la place : sinon l'étoile active et son libellé se
-   posent sur le texte de la partie qu'on est en train de lire. */
-@media (min-width: 901px) and (min-height: 661px) {
+/* Les repères latéraux sont fixés contre le bord droit du viewport. Tant
+   qu'ils sont affichés, le contenu leur laisse la place, sinon l'étoile active
+   et son libellé se posent sur le texte de la partie qu'on est en train de
+   lire. Trois paliers :
+   - jusqu'à 1200 px, l'étoile est seule (48 px), le libellé serait de trop ;
+   - au-delà, l'étoile et son libellé demandent environ 112 px ;
+   - à partir de 1830 px, plus rien à réserver : la page bute sur `--page` et
+     ses marges naturelles dépassent déjà la largeur des repères. */
+@media (min-width: 901px) and (max-width: 1830px) and (min-height: 661px) {
+  .frame-inner { padding-right: max(var(--gutter), 64px); }
+}
+
+@media (min-width: 1201px) and (max-width: 1830px) and (min-height: 661px) {
   .frame-inner { padding-right: max(var(--gutter), 136px); }
 }
 
-@media (max-width: 900px), (max-height: 660px) {
+/* --- L'écran du téléphone est un écran comme un autre ---------------- *
+   Une partie occupe toujours la hauteur du viewport : sur téléphone, c'est
+   simplement un écran portrait au lieu d'un écran paysage. Deux choses
+   changent seulement.
+
+   D'abord la barre de navigation. Elle est fixe, donc elle recouvre le haut
+   de chaque partie : la hauteur réellement visible n'est pas `100svh` mais
+   `100svh` moins sa hauteur. On la déduit en réservant sa hauteur en haut de
+   chaque partie, et le contenu se centre dans ce qui reste, jamais dessous.
+
+   Ensuite l'accrochage, qui passe de `mandatory` à `proximity` : les parties
+   longues, parcours et projets, dépassent forcément un écran de téléphone, et
+   un accrochage impératif se battrait avec le doigt au milieu de leur lecture.
+ * ------------------------------------------------------------------ */
+
+@media (max-width: 900px) {
+  html { scroll-snap-type: y proximity; }
+
+  .frame {
+    padding-block: calc(var(--nav-h) + 22px) 34px;
+    scroll-snap-stop: normal;
+    overflow: visible;
+  }
+}
+
+/* Un téléphone couché ne fait plus que 390 px de haut : aucune partie n'y
+   tient, on relâche complètement et la page se déroule. */
+@media (max-height: 660px) {
   html { scroll-snap-type: none; }
+
   .frame {
     min-height: 0;
     scroll-snap-align: none;
-    padding-block: clamp(90px, 14vw, 140px);
+    padding-block: calc(var(--nav-h) + 20px) 40px;
     overflow: visible;
   }
 }
@@ -403,4 +440,22 @@ h1, h2, h3, h4, p, li, span, strong, em, blockquote, figcaption, label, td, th {
     transition-duration: 0.001ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+}
+
+/* --- Téléphone ------------------------------------------------------ *
+   Rythme resserré, titres ramenés à la largeur disponible, coins moins
+   arrondis parce qu'une carte de 335 px de large avec 36 px de rayon n'a
+   presque plus d'angle droit. La palette et les fontes ne bougent pas.
+ * ------------------------------------------------------------------ */
+
+@media (max-width: 760px) {
+  :root {
+    --nav-h: 60px;
+    --r-lg: 22px;
+    --r-xl: 24px;
+  }
+
+  .section-title { font-size: clamp(29px, 8.6vw, 40px); margin-top: 12px; }
+  .section-lead { font-size: 16px; margin-top: 14px; max-width: none; }
+  .btn { padding: 14px 22px; width: 100%; }
 }

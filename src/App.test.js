@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
 import { projects, skillGroups } from "./data/content";
 
@@ -52,4 +52,14 @@ test("chaque compétence renvoie à une source officielle", () => {
   const links = [...container.querySelectorAll(".skill-group li a")];
   expect(links).toHaveLength(items.length);
   links.forEach((a) => expect(a).toHaveAttribute("href", expect.stringMatching(/^https:/)));
+});
+
+test("le menu de téléphone reste fermé tant qu'on ne l'ouvre pas", () => {
+  const { container } = render(<App />);
+  expect(container.querySelector(".nav-sheet")).toBeNull();
+
+  fireEvent.click(screen.getByRole("button", { name: "Menu" }));
+  const sheet = container.querySelector(".nav-sheet");
+  expect(sheet).toBeInTheDocument();
+  expect(sheet.querySelectorAll("a")).toHaveLength(3);
 });

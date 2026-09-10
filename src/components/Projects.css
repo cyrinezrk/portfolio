@@ -420,16 +420,78 @@
 
 @media (max-width: 1000px) {
   .projects-body { grid-template-columns: 1fr; }
-  .p-sheet { grid-template-columns: 1fr; }
+  /* `.has-figure` doit être répété : une requête média n'ajoute aucune
+     spécificité, et `.p-sheet.has-figure` l'emporterait sur `.p-sheet`. */
+  .p-sheet,
+  .p-sheet.has-figure { grid-template-columns: 1fr; }
   .p-sheet-visual { min-height: 180px; aspect-ratio: 16 / 9; }
   .p-sheet-body { max-height: none; overflow: visible; margin: 0; }
+  /* Le sommaire devient une bande qui défile latéralement : chaque ligne garde
+     sa largeur naturelle au lieu d'être comprimée par ses voisines. */
   .p-index {
     flex-direction: row;
     overflow-x: auto;
     padding-bottom: 6px;
     gap: 6px;
   }
+  .p-index > li { flex: none; }
   .p-item { width: auto; grid-template-columns: auto auto; white-space: nowrap; }
   .p-item .p-track, .p-item .p-flag { display: none; }
   .p-item.is-on { transform: none; }
+}
+
+/* --- Téléphone ------------------------------------------------------- *
+   Le sommaire devient une rangée de pastilles qui file d'un bord à l'autre
+   de l'écran, comme les filtres juste au-dessus. La fiche, elle, se lit d'une
+   traite : image, texte, puis les deux boutons en pleine largeur.
+ * ------------------------------------------------------------------- */
+
+@media (max-width: 760px) {
+  .projects-inner { gap: 20px; }
+  .projects-head { gap: 16px; }
+  .filter { padding: 8px 14px; font-size: 13.5px; }
+
+  /* La bande de pastilles touche les deux bords : on voit qu'elle continue. */
+  .p-index {
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+  .p-index::-webkit-scrollbar { display: none; }
+
+  .p-item {
+    padding: 9px 15px;
+    border-radius: var(--r-pill);
+    border: 1px solid var(--line);
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Le liseré vertical ne veut plus rien dire sur une pastille couchée : le
+     projet ouvert se marque par le même dégradé que le filtre actif. */
+  .p-item::before { display: none; }
+
+  .p-item.is-on {
+    background: linear-gradient(120deg, var(--lilac-400), var(--pink-300));
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(171, 134, 245, 0.34);
+  }
+
+  .p-item.is-on .p-num { color: rgba(255, 255, 255, 0.75); }
+
+  .p-sheet-visual { aspect-ratio: 16 / 10; }
+  .p-sheet-body { padding: 22px 18px 26px; }
+  .p-sheet-title { font-size: 27px; }
+  .p-sheet-tagline { font-size: 17px; }
+  .p-sheet-summary { font-size: 15px; }
+
+  .p-sheet-stats { grid-template-columns: 1fr 1fr; gap: 9px; }
+  .p-sheet-stats li { padding: 11px 12px; }
+  .p-sheet-stats strong { font-size: 22px; }
+
+  .p-sheet-foot { gap: 16px; }
+  .p-sheet-links { flex-direction: column; width: 100%; gap: 9px; }
+
+  .projects-note { font-size: 12.5px; padding-left: 13px; }
 }

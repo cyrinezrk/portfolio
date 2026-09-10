@@ -17,9 +17,12 @@ export default function App() {
       const saved = window.localStorage.getItem(STORAGE_KEY);
       if (saved === "fr" || saved === "en") return saved;
     } catch {
-      /* navigation privée, stockage bloqué : on retombe sur la détection */
+      /* navigation privée, stockage bloqué : on retombe sur la langue par défaut */
     }
-    return navigator.language?.startsWith("en") ? "en" : "fr";
+    /* Le site s'ouvre en anglais, quelle que soit la langue du navigateur : les
+       recruteurs et les équipes data ne sont pas tous francophones. Le français
+       reste à un clic, et le choix est retenu d'une visite à l'autre. */
+    return "en";
   });
 
   const t = ui[language];

@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   gap: 24px;
-  height: 74px;
+  height: var(--nav-h);
 }
 
 .nav-brand {
@@ -152,6 +152,10 @@
 .nav.is-open .nav-burger span:nth-child(2) { opacity: 0; }
 .nav.is-open .nav-burger span:nth-child(3) { transform: translateY(-5.6px) rotate(-45deg); }
 
+/* Ce panneau ne se montre qu'ouvert. Attention au piège : `hidden` ne fait
+   que poser `display: none` via la feuille du navigateur, donc n'importe quelle
+   règle d'auteur qui redéclare `display` l'annule. C'est ce qui laissait les
+   trois liens dépliés en permanence sous la barre, sur tous les téléphones. */
 .nav-sheet {
   display: none;
   flex-direction: column;
@@ -173,6 +177,26 @@
 @media (max-width: 760px) {
   .nav-links { display: none; }
   .nav-burger { display: flex; }
-  .nav-sheet { display: flex; }
-  .nav-name { display: none; }
+  .nav.is-open .nav-sheet { display: flex; }
+
+  /* La barre reste fixe, et garde son voile en permanence : sans lui, le titre
+     de la partie qu'on lit lui passerait au travers. */
+  .nav {
+    background: rgba(251, 247, 255, 0.86);
+    backdrop-filter: blur(14px) saturate(1.4);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    border-bottom-color: var(--line);
+  }
+
+  /* Le prénom suffit : le nom entier pousserait les trois commandes de droite
+     hors de l'écran sur un petit téléphone. */
+  .nav-name { display: inline; font-size: 15px; }
+  .nav-surname { display: none; }
+
+  .nav-inner { gap: 12px; }
+  .nav-mark { width: 26px; height: 26px; }
+  .nav-lang { width: 36px; height: 32px; }
+  .nav-burger { width: 36px; height: 32px; }
+  .nav-cv { padding: 8px 14px; font-size: 13.5px; }
+  .nav-sheet a { padding: 15px 4px; font-size: 17px; }
 }

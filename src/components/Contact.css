@@ -143,6 +143,7 @@
   .contact-card { grid-template-columns: 1fr; }
 }
 
+
 /* --- Ce que je cherche ----------------------------------------------- */
 
 .availability {
@@ -174,4 +175,39 @@
   0% { box-shadow: 0 0 0 0 rgba(86, 197, 150, 0.55); }
   70% { box-shadow: 0 0 0 9px rgba(86, 197, 150, 0); }
   100% { box-shadow: 0 0 0 0 rgba(86, 197, 150, 0); }
+}
+
+/* --- Téléphone ------------------------------------------------------- */
+
+@media (max-width: 760px) {
+  .contact-card {
+    padding: 26px 20px 28px;
+    gap: 26px;
+    border-radius: var(--r-lg);
+  }
+
+  .contact-links { margin-top: 22px; }
+  .contact-links a { font-size: 14px; }
+  .contact-cv { margin-top: 22px; }
+
+  .availability { margin-top: 20px; padding: 13px 15px; font-size: 13px; }
+
+  .contact-form { gap: 15px; }
+
+  /* 16 px au minimum : en dessous, iOS zoome tout seul à la mise au point du
+     champ et la page reste de travers ensuite. */
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 16px;
+    padding: 13px 14px;
+  }
+
+  /* Cinq lignes de saisie, c'est un choix de bureau : sur un écran de
+     téléphone elles poussent le bouton d'envoi hors de vue. */
+  .contact-form textarea { height: 104px; }
+
+  .contact-form button { justify-self: stretch; }
+
+  .contact-success { padding: 24px 20px; }
+  .contact-success h3 { font-size: 23px; }
 }

@@ -83,6 +83,12 @@
 
 .frame-nav a.is-active .fn-label { color: var(--lilac-600); }
 
+/* Sous 1200 px, l'étoile se suffit : garder le libellé obligerait le contenu
+   à reculer de 136 px, ce qui est cher payé sur un écran déjà étroit. */
+@media (max-width: 1200px) {
+  .fn-label { display: none; }
+}
+
 @media (max-width: 900px), (max-height: 660px) {
   .frame-nav { display: none; }
 }
