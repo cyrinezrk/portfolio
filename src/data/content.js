@@ -413,6 +413,38 @@ export const projects = [
         "A platform encouraging good ecological habits through playful mechanics and recurring challenges. A lot of product thinking before the first line of code.",
     },
   },
+  {
+    // Le seul projet sans lien ni dépôt : il n'y a rien à aller voir encore.
+    // `comingSoon` est ce qui le laisse malgré tout apparaître dans la liste,
+    // et ce qui le pousse en dernier.
+    id: "jobzz",
+    comingSoon: true,
+    track: "web",
+    year: "2026",
+    image: null,
+    cover: "veil",
+    link: null,
+    fr: {
+      title: "Jobzz",
+      tagline: "En chantier",
+      role: "Projet personnel · en cours",
+      summary:
+        "Celui-là, je le construis en ce moment, et je préfère ne pas trop en dire tant qu'il ne tient pas debout tout seul. Il part d'une question simple, dont je crois que la réponse habituelle est fausse : qu'est-ce qu'on cherche vraiment, quand on cherche un travail ?",
+      findingLabel: "Pour l'instant",
+      finding:
+        "Le reste attendra la mise en ligne.",
+    },
+    en: {
+      title: "Jobzz",
+      tagline: "Under construction",
+      role: "Personal project · in progress",
+      summary:
+        "This one I'm building right now, and I'd rather not say too much until it stands on its own. It starts from a simple question, whose usual answer I think is wrong: what are people actually looking for, when they look for a job?",
+      findingLabel: "For now",
+      finding:
+        "The rest will wait for launch.",
+    },
+  },
 ];
 
 export const education = [
@@ -573,6 +605,10 @@ export const ui = {
     downloadCv: "Télécharger mon CV",
     switchLanguage: "EN",
     switchLanguageAria: "Passer le site en anglais",
+    switchTheme: "Mode nuit",
+    switchThemeAria: "Passer le site en mode nuit",
+    switchThemeBack: "Mode jour",
+    switchThemeBackAria: "Revenir au mode jour",
     footer: "Conçu et développé par Cyrine Zarkouna",
     comingSoon: "Bientôt",
   },
@@ -615,6 +651,10 @@ export const ui = {
     downloadCv: "Download my CV",
     switchLanguage: "FR",
     switchLanguageAria: "Switch the site to French",
+    switchTheme: "Night mode",
+    switchThemeAria: "Switch the site to night mode",
+    switchThemeBack: "Day mode",
+    switchThemeBackAria: "Back to day mode",
     footer: "Designed and built by Cyrine Zarkouna",
     comingSoon: "Soon",
   },

@@ -17,14 +17,19 @@ export default function Projects({ t, language }) {
 
   // Un projet qu'on ne peut pas aller voir n'a rien à faire ici : il faut un
   // site en ligne ou un dépôt. Ajouter `link` ou `repo` le fait réapparaître.
+  // Seule exception, `comingSoon` : un projet encore en chantier n'a rien à
+  // montrer, mais dire qu'il existe fait partie du propos.
   // Les projets data ouvrent la liste — c'est le message de la page — et JOJA
   // passe devant : c'est lui qui s'affiche quand on arrive sur cet écran.
+  // Ce qui est en chantier ferme la marche, quel que soit son domaine.
   const ordered = useMemo(() => {
-    const shown = projects.filter((p) => p.link || p.repo);
+    const shown = projects.filter((p) => p.link || p.repo || p.comingSoon);
+    const done = shown.filter((p) => !p.comingSoon);
     return [
-      ...shown.filter((p) => p.id === "joja"),
-      ...shown.filter((p) => p.id !== "joja" && p.featured),
-      ...shown.filter((p) => p.id !== "joja" && !p.featured),
+      ...done.filter((p) => p.id === "joja"),
+      ...done.filter((p) => p.id !== "joja" && p.featured),
+      ...done.filter((p) => p.id !== "joja" && !p.featured),
+      ...shown.filter((p) => p.comingSoon),
     ];
   }, []);
 
@@ -112,6 +117,7 @@ export default function Projects({ t, language }) {
                   <span className="p-num">{String(i + 1).padStart(2, "0")}</span>
                   <span className="p-name">{p[language].title}</span>
                   {p.featured && <span className="p-flag" aria-hidden="true">★</span>}
+                  {p.comingSoon && <span className="p-soon">{t.comingSoon}</span>}
                   <span className="p-track">{TRACKS[p.track][language]}</span>
                 </button>
               </li>
@@ -130,7 +136,9 @@ export default function Projects({ t, language }) {
             <div className="p-sheet-body">
               <p className="p-sheet-role">
                 {copy.role}
-                <span className="p-sheet-year">{active.year}</span>
+                <span className="p-sheet-year">
+                  {active.comingSoon ? t.comingSoon : active.year}
+                </span>
               </p>
               <h3 className="p-sheet-title">{copy.title}</h3>
               <p className="p-sheet-tagline">{copy.tagline}</p>
@@ -173,13 +181,18 @@ export default function Projects({ t, language }) {
               )}
 
               <div className="p-sheet-foot">
+                {/* Une pile annoncée est une promesse : un projet en chantier
+                    n'en fait pas, donc `stack` peut manquer. */}
                 <ul className="stack">
-                  {active.stack.map((s) => (
+                  {(active.stack || []).map((s) => (
                     <li key={s} className="chip">{s}</li>
                   ))}
                 </ul>
 
                 <div className="p-sheet-links">
+                  {active.comingSoon && !active.link && !active.repo && (
+                    <span className="btn btn-soon">{t.comingSoon}</span>
+                  )}
                   {active.link && (
                     <a className="btn btn-primary" href={active.link} target="_blank" rel="noopener noreferrer">
                       {t.liveSite}

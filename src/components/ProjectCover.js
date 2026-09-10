@@ -35,6 +35,25 @@ function Book() {
   );
 }
 
+/* Jobzz : trois fiches empilées, le texte caviardé, un voile qui passe.
+   Rien à lire — c'est le sujet. */
+function Veil() {
+  const cards = [0, 1, 2];
+  const lines = [88, 62, 74, 46];
+  return (
+    <div className="cover-veil" aria-hidden="true">
+      {cards.map((c) => (
+        <span key={c} className={`veil-card v${c}`}>
+          {lines.map((w, i) => (
+            <i key={i} style={{ width: `${w}%` }} />
+          ))}
+        </span>
+      ))}
+      <span className="veil-sweep" />
+    </div>
+  );
+}
+
 export default function ProjectCover({ project, alt = "" }) {
   if (project.image) {
     // Un graphique ou une gravure se montrent entiers : les rogner les rendrait
@@ -53,6 +72,7 @@ export default function ProjectCover({ project, alt = "" }) {
     <div className={`cover cover-${project.cover || "plain"}`}>
       {project.cover === "bars" && <Bars />}
       {project.cover === "book" && <Book />}
+      {project.cover === "veil" && <Veil />}
     </div>
   );
 }

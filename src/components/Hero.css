@@ -161,8 +161,8 @@
 }
 
 .blob.b1 {
-  --blob-from: #e3d0ff;
-  --blob-to: #ffd7ef;
+  --blob-from: var(--blob-1-from);
+  --blob-to: var(--blob-1-to);
   width: min(58vw, 780px);
   height: min(58vw, 780px);
   top: -8%;
@@ -172,8 +172,8 @@
 }
 
 .blob.b2 {
-  --blob-from: #ffe0f0;
-  --blob-to: #d8f5ea;
+  --blob-from: var(--blob-2-from);
+  --blob-to: var(--blob-2-to);
   width: min(38vw, 520px);
   height: min(38vw, 520px);
   bottom: -14%;
@@ -183,8 +183,8 @@
 }
 
 .blob.b3 {
-  --blob-from: #efe4ff;
-  --blob-to: #ffeccb;
+  --blob-from: var(--blob-3-from);
+  --blob-to: var(--blob-3-to);
   width: min(30vw, 400px);
   height: min(30vw, 400px);
   top: 46%;
@@ -212,8 +212,8 @@
   position: absolute;
   bottom: -80px;
   border-radius: 50%;
-  background: radial-gradient(circle at 32% 30%, rgba(255, 255, 255, 0.9), rgba(214, 186, 255, 0.42) 46%, rgba(255, 190, 226, 0.24));
-  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.6);
+  background: var(--bubble);
+  box-shadow: inset 0 0 12px var(--bubble-inset);
   animation-name: float-up;
   animation-timing-function: linear;
   animation-iteration-count: infinite;

@@ -41,8 +41,8 @@
 .filter.is-on {
   background: linear-gradient(120deg, var(--lilac-400), var(--pink-300));
   border-color: transparent;
-  color: #fff;
-  box-shadow: 0 8px 20px rgba(171, 134, 245, 0.34);
+  color: var(--on-accent);
+  box-shadow: 0 8px 20px var(--accent-shadow);
 }
 
 .filter-count {
@@ -55,7 +55,7 @@
   transition: background 0.3s var(--ease), color 0.3s var(--ease);
 }
 
-.filter.is-on .filter-count { background: rgba(255, 255, 255, 0.28); color: #fff; }
+.filter.is-on .filter-count { background: var(--on-accent-veil); color: var(--on-accent); }
 
 /* --- Sommaire et fiche ------------------------------------------------ */
 
@@ -81,7 +81,14 @@
 .p-item {
   position: relative;
   display: grid;
-  grid-template-columns: auto 1fr auto auto;
+  /* Le numéro, le nom, puis ce que la ligne porte : une étoile, une mention
+     « bientôt », le domaine. Le nombre de pastilles varie d'un projet à
+     l'autre, donc les colonnes de fin se créent à la demande plutôt que
+     d'être comptées à l'avance. `minmax(0, 1fr)` laisse le nom se couper
+     au lieu de pousser le reste hors de la ligne. */
+  grid-auto-flow: column;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-auto-columns: auto;
   align-items: center;
   gap: 11px;
   width: 100%;
@@ -137,6 +144,35 @@
 
 .p-flag { font-size: 11px; color: var(--pink-300); }
 
+/* Un projet en chantier se signale dans le sommaire, en petit : il compte
+   dans la liste sans se faire passer pour un projet livré. */
+.p-soon {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: var(--r-pill);
+  background: var(--lilac-100);
+  color: var(--lilac-600);
+  border: 1px dashed var(--line-strong);
+  white-space: nowrap;
+}
+
+.p-item.is-on .p-soon { border-style: solid; }
+
+/* Sur la fiche, à la place des liens : il n'y a rien à ouvrir. */
+.btn-soon {
+  background: transparent;
+  border: 1px dashed var(--line-strong);
+  color: var(--ink-soft);
+  cursor: default;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .p-track {
   font-family: var(--font-mono);
   font-size: 9.5px;
@@ -187,7 +223,7 @@
 .p-sheet-visual img.is-contain {
   object-fit: contain;
   padding: clamp(14px, 1.6vw, 22px);
-  background: #fff;
+  background: var(--plate);
   border-radius: var(--r-md);
   box-shadow: var(--shadow-md);
   width: calc(100% - clamp(24px, 3vw, 44px));
@@ -474,11 +510,11 @@
   .p-item.is-on {
     background: linear-gradient(120deg, var(--lilac-400), var(--pink-300));
     border-color: transparent;
-    color: #fff;
-    box-shadow: 0 8px 20px rgba(171, 134, 245, 0.34);
+    color: var(--on-accent);
+    box-shadow: 0 8px 20px var(--accent-shadow);
   }
 
-  .p-item.is-on .p-num { color: rgba(255, 255, 255, 0.75); }
+  .p-item.is-on .p-num { color: var(--on-accent-dim); }
 
   .p-sheet-visual { aspect-ratio: 16 / 10; }
   .p-sheet-body { padding: 22px 18px 26px; }

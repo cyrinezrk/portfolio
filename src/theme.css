@@ -64,6 +64,121 @@
   --nav-h: 74px;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* --- Jetons sémantiques ------------------------------------------- *
+     Ces valeurs vivaient en dur dans les composants. Sorties ici, elles
+     donnent au mode nuit une prise sur tout ce qui n'est pas une couleur
+     de la palette : voiles, ombres, aplats, décor.
+   * ------------------------------------------------------------------ */
+  --on-accent: #ffffff;                        /* texte posé sur un aplat d'accent */
+  --on-accent-dim: rgba(255, 255, 255, 0.75);
+  --on-accent-veil: rgba(255, 255, 255, 0.28);
+  --accent-shadow: rgba(171, 134, 245, 0.34);
+  --accent-shadow-strong: rgba(171, 134, 245, 0.44);
+
+  --nav-glass: rgba(251, 247, 255, 0.78);      /* la barre, au repos */
+  --nav-glass-soft: rgba(251, 247, 255, 0.86);
+  --nav-glass-strong: rgba(251, 247, 255, 0.96);
+  --nav-shadow: rgba(122, 78, 190, 0.06);
+
+  --plate: #ffffff;                            /* la planche sous une image entière */
+  --band: rgba(244, 236, 255, 0.5);            /* voile entre deux écrans */
+  --track: rgba(171, 134, 245, 0.14);          /* rail d'une barre de graphique */
+  --star-glow: rgba(247, 124, 192, 0.55);
+  --grain-opacity: 0.35;
+
+  --ok: #56c596;
+  --ok-pulse: rgba(86, 197, 150, 0.55);
+  --ok-pulse-out: rgba(86, 197, 150, 0);
+
+  --bubble: radial-gradient(circle at 32% 30%, rgba(255, 255, 255, 0.9), rgba(214, 186, 255, 0.42) 46%, rgba(255, 190, 226, 0.24));
+  --bubble-inset: rgba(255, 255, 255, 0.6);
+
+  --blob-1-from: #e3d0ff;  --blob-1-to: #ffd7ef;
+  --blob-2-from: #ffe0f0;  --blob-2-to: #d8f5ea;
+  --blob-3-from: #efe4ff;  --blob-3-to: #ffeccb;
+
+  color-scheme: light;
+}
+
+/* ------------------------------------------------------------------ *
+   Mode nuit — « pastel magique » de nuit.
+   Même site, même lilas, mais posé sur du violet profond. On ne touche
+   qu'aux jetons : aucun composant ne connaît le thème.
+
+   Deux principes tenus partout :
+   - ce qui portait du texte clair sur un aplat coloré garde son aplat
+     (--lilac-400, --pink-300) ; ce qui servait de texte s'éclaircit
+     (--lilac-500, --lilac-600) ;
+   - ce qui servait de fond très clair devient un violet sombre
+     (--lilac-50 à --lilac-200), sinon les puces et les cartes
+     trouent la page.
+ * ------------------------------------------------------------------ */
+:root[data-theme="dark"] {
+  --bg: #120e20;
+  --bg-soft: #191231;
+  --surface: #1c1536;
+  --surface-2: #221a41;
+
+  --lilac-50: #241c40;
+  --lilac-100: #2c2350;
+  --lilac-200: #372c62;
+  --lilac-300: #6b55ad;
+  --lilac-400: #9b7ae8;
+  --lilac-500: #b79bff;
+  --lilac-600: #cdb5ff;
+
+  --pink-100: #3a2246;
+  --pink-200: #4d2a58;
+  --pink-300: #f79cd0;
+  --pink-400: #f782c2;
+  --pink-500: #ffb3dc;
+
+  --mint: #2b5a4c;
+  --butter: #4a3f25;
+
+  --ink: #f1ebff;
+  --ink-soft: #c2b5e2;
+  --ink-faint: #8e81b4;
+
+  --line: #2d2452;
+  --line-strong: #40336c;
+
+  /* Sur fond sombre, une ombre teintée ne se voit pas : il faut du noir. */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.55);
+  --glow: 0 0 0 4px rgba(155, 122, 232, 0.4);
+
+  --accent-shadow: rgba(72, 44, 140, 0.55);
+  --accent-shadow-strong: rgba(72, 44, 140, 0.7);
+
+  --nav-glass: rgba(18, 14, 32, 0.74);
+  --nav-glass-soft: rgba(18, 14, 32, 0.88);
+  --nav-glass-strong: rgba(18, 14, 32, 0.96);
+  --nav-shadow: rgba(0, 0, 0, 0.5);
+
+  /* La planche reste claire : les graphiques et la gravure sont exportés
+     sur fond blanc, les poser sur du violet foncé les rendrait sales. */
+  --plate: #f3eeff;
+  --band: rgba(44, 32, 80, 0.45);
+  --track: rgba(155, 122, 232, 0.18);
+  --star-glow: rgba(247, 140, 200, 0.5);
+  /* Le grain est un bruit noir : à pleine force il ternit le violet. */
+  --grain-opacity: 0.18;
+
+  --ok: #4bb98c;
+  --ok-pulse: rgba(75, 185, 140, 0.5);
+  --ok-pulse-out: rgba(75, 185, 140, 0);
+
+  --bubble: radial-gradient(circle at 32% 30%, rgba(214, 186, 255, 0.5), rgba(140, 105, 220, 0.26) 46%, rgba(247, 140, 200, 0.14));
+  --bubble-inset: rgba(255, 255, 255, 0.16);
+
+  --blob-1-from: #3b2a63;  --blob-1-to: #582b52;
+  --blob-2-from: #48254f;  --blob-2-to: #1e4a44;
+  --blob-3-from: #332557;  --blob-3-to: #4a3a1e;
+
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -88,6 +203,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
+  transition: background-color 0.45s var(--ease), color 0.45s var(--ease);
   font-family: var(--font-sans);
   font-size: 17px;
   line-height: 1.65;
@@ -414,7 +530,7 @@ h1, h2, h3, h4, p, li, span, strong, em, blockquote, figcaption, label, td, th {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.35;
+  opacity: var(--grain-opacity);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.32'/%3E%3C/svg%3E");
 }
 

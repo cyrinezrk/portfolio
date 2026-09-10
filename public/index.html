@@ -8,6 +8,27 @@
     <!-- Icônes : le piment, partout. logo192/512 sont les logos de Create
          React App, gardés uniquement parce que content.js s'en sert comme
          icône de la techno React — ils ne représentent pas le site. -->
+    <!-- Le thème est posé sur <html> avant le premier rendu. Sans ça, un
+         visiteur en mode nuit verrait la page s'afficher en clair pendant
+         un instant, le temps que React démarre. -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("portfolio:theme");
+          if (t === "dark" || t === "light") {
+            document.documentElement.dataset.theme = t;
+            if (t === "dark") {
+              document
+                .querySelector('meta[name="theme-color"]')
+                .setAttribute("content", "#120e20");
+            }
+          }
+        } catch (e) {
+          /* stockage bloqué : le site s'ouvre en clair */
+        }
+      })();
+    </script>
+
     <link rel="icon" href="%PUBLIC_URL%/logo.ico" />
     <link rel="icon" type="image/png" sizes="any" href="%PUBLIC_URL%/logo.png" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />

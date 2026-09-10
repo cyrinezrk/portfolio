@@ -9,12 +9,17 @@ import Contact from "./components/Contact";
 import { ui } from "./data/content";
 import "./App.css";
 
-const STORAGE_KEY = "portfolio:lang";
+const LANG_KEY = "portfolio:lang";
+const THEME_KEY = "portfolio:theme";
+
+/* Doit rester d'accord avec --bg dans theme.css : c'est la couleur que
+   les navigateurs mobiles peignent derrière la barre d'adresse. */
+const BROWSER_UI = { light: "#fbf7ff", dark: "#120e20" };
 
 export default function App() {
   const [language, setLanguage] = useState(() => {
     try {
-      const saved = window.localStorage.getItem(STORAGE_KEY);
+      const saved = window.localStorage.getItem(LANG_KEY);
       if (saved === "fr" || saved === "en") return saved;
     } catch {
       /* navigation privée, stockage bloqué : on retombe sur la langue par défaut */
@@ -30,13 +35,41 @@ export default function App() {
   useEffect(() => {
     document.documentElement.lang = language;
     try {
-      window.localStorage.setItem(STORAGE_KEY, language);
+      window.localStorage.setItem(LANG_KEY, language);
     } catch {
       /* rien à faire : la préférence ne sera juste pas retenue */
     }
   }, [language]);
 
   const toggleLanguage = () => setLanguage((l) => (l === "fr" ? "en" : "fr"));
+
+  /* Le site reste clair par défaut : le mode nuit est un choix, pas un
+     réglage deviné depuis le système. Une fois choisi, il est retenu.
+     La valeur est déjà posée sur <html> par le script d'index.html, avant
+     le premier rendu, sinon la page clignoterait en blanc au chargement. */
+  const [theme, setTheme] = useState(() => {
+    try {
+      const saved = window.localStorage.getItem(THEME_KEY);
+      if (saved === "light" || saved === "dark") return saved;
+    } catch {
+      /* stockage bloqué : on ouvre en clair */
+    }
+    return "light";
+  });
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", BROWSER_UI[theme]);
+    try {
+      window.localStorage.setItem(THEME_KEY, theme);
+    } catch {
+      /* rien à faire : la préférence ne sera juste pas retenue */
+    }
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((v) => (v === "dark" ? "light" : "dark"));
 
   // L'ordre des écrans : qui je suis, d'où je viens, ce que je fais, comment me joindre.
   const frames = [
@@ -60,7 +93,13 @@ export default function App() {
         {language === "fr" ? "Aller au contenu" : "Skip to content"}
       </a>
 
-      <Nav t={t} language={language} onToggleLanguage={toggleLanguage} />
+      <Nav
+        t={t}
+        language={language}
+        onToggleLanguage={toggleLanguage}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
       <FrameNav frames={frames} />
 
       <main>

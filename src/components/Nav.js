@@ -8,7 +8,7 @@ const SECTIONS = [
   { id: "contact", key: "navContact" },
 ];
 
-export default function Nav({ t, language, onToggleLanguage }) {
+export default function Nav({ t, language, onToggleLanguage, theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("about");
   const [open, setOpen] = useState(false);
@@ -72,6 +72,26 @@ export default function Nav({ t, language, onToggleLanguage }) {
         </nav>
 
         <div className="nav-actions">
+          {/* Une lune, toujours la même : elle s'allume quand la nuit est
+              en cours, plutôt que de se transformer en soleil. Ce que fait
+              le bouton est dit par son libellé, pas par son dessin. */}
+          <button
+            type="button"
+            className="nav-theme"
+            onClick={onToggleTheme}
+            aria-label={theme === "dark" ? t.switchThemeBackAria : t.switchThemeAria}
+            aria-pressed={theme === "dark"}
+            title={theme === "dark" ? t.switchThemeBack : t.switchTheme}
+          >
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path
+                className="moon"
+                d="M16.9 12.6A7.2 7.2 0 0 1 7.4 3.1a7.2 7.2 0 1 0 9.5 9.5Z"
+              />
+              <circle className="spark s1" cx="15.1" cy="4.3" r="1.05" />
+              <circle className="spark s2" cx="17.6" cy="7.7" r="0.72" />
+            </svg>
+          </button>
           <button
             type="button"
             className="nav-lang"

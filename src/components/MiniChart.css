@@ -42,7 +42,7 @@
 .mc-track {
   height: 9px;
   border-radius: var(--r-pill);
-  background: rgba(171, 134, 245, 0.14);
+  background: var(--track);
   overflow: hidden;
 }
 
