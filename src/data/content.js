@@ -187,6 +187,78 @@ export const projects = [
     },
   },
   {
+    id: "caninmarin",
+    track: "web",
+    year: "2026",
+    image: `${P}/caninmarin.png`,
+    fit: "contain",
+    link: "https://caninmarin.fr/",
+    stack: ["Next.js", "React", "Stripe"],
+    fr: {
+      title: "Canin Marin",
+      tagline: "Une boutique en ligne, du panier au paiement",
+      role: "Conception et développement, seule",
+      summary:
+        "Boutique en ligne d'une marque bretonne de friandises naturelles pour chiens, fabriquées à la main dans son atelier. J'ai fait le site à 100 % : maquettes, interface, catalogue filtrable, compte client, panier, et le paiement en ligne branché sur Stripe. Un vrai site marchand, pas une vitrine avec un bouton de contact.",
+      highlights: [
+        "Paiement en ligne intégré avec Stripe : la commande se règle sur le site, du panier jusqu'à la confirmation.",
+        "Catalogue filtrable par catégorie et par sélection, pour retrouver un produit dans une gamme qui s'agrandit.",
+        "Identité et interface dessinées puis intégrées par mes soins, sur du sur-mesure plutôt qu'un thème acheté.",
+      ],
+      findingLabel: "Ce que j'en retiens",
+      finding:
+        "Un site qui encaisse de l'argent ne se traite pas comme un site vitrine. Il faut que le panier, le stock et le paiement disent tous la même chose au même moment, sinon c'est le client qui paie l'erreur.",
+    },
+    en: {
+      title: "Canin Marin",
+      tagline: "An online shop, from cart to checkout",
+      role: "Design and development, solo",
+      summary:
+        "Online shop for a Breton brand of natural dog treats, handmade in its own workshop. I built the site end to end: mockups, interface, filterable catalogue, customer account, cart, and online payment wired to Stripe. A real storefront, not a showcase with a contact button.",
+      highlights: [
+        "Online payment integrated with Stripe: the order is paid for on the site, from cart to confirmation.",
+        "Catalogue filtered by category and by selection, so a product stays findable as the range grows.",
+        "Identity and interface designed and then built by me, custom rather than a bought theme.",
+      ],
+      findingLabel: "What I take from it",
+      finding:
+        "A site that takes money is not a showcase site. The cart, the stock and the payment all have to say the same thing at the same moment, otherwise the customer is the one who pays for the mistake.",
+    },
+  },
+  {
+    id: "kidskreol",
+    track: "web",
+    year: "2026",
+    image: `${P}/kidskreol.png`,
+    fit: "contain",
+    link: "https://kidskreol.re/",
+    stack: ["Next.js", "React", "Tailwind"],
+    fr: {
+      title: "Kids Kréol",
+      tagline: "Réserver une place en crèche, en ligne",
+      role: "Conception & développement",
+      summary:
+        "Site d'un réseau de trois micro-crèches à Saint-Pierre, à La Réunion. Il présente les structures, les équipes et les aides au financement, et surtout il permet aux parents de réserver une place par un formulaire de pré-inscription, au lieu d'appeler et de rappeler.",
+      highlights: [
+        "Formulaire de réservation de place en ligne : la demande d'inscription part du site, à l'heure qui arrange les parents.",
+        "Les trois crèches présentées séparément, avec leurs équipes, leurs horaires et leur cadre.",
+        "Une direction artistique douce et colorée, tenue de la première maquette jusqu'à l'intégration.",
+      ],
+    },
+    en: {
+      title: "Kids Kréol",
+      tagline: "Booking a nursery place online",
+      role: "Design & development",
+      summary:
+        "Site for a network of three micro-nurseries in Saint-Pierre, on Réunion Island. It presents the sites, the teams and the funding help available, and above all it lets parents book a place through a pre-registration form instead of calling and calling back.",
+      highlights: [
+        "Online place-booking form: the registration request leaves from the site, at whatever hour suits the parents.",
+        "The three nurseries presented separately, with their teams, their hours and their setting.",
+        "A soft, colourful art direction, held from the first mockup through to the build.",
+      ],
+    },
+  },
+  {
     id: "circle",
     track: "web",
     year: "2025",
@@ -213,21 +285,36 @@ export const projects = [
     track: "web",
     year: "2024",
     image: `${P}/patvtc.png`,
+    fit: "contain",
     link: "https://patvtc.fr/",
     stack: ["React", "MySQL", "Docker", "DBeaver"],
     fr: {
       title: "Pat VTC",
-      tagline: "Authentification, recherche, fiches",
+      tagline: "Réserver sa course sans décrocher le téléphone",
       role: "Cheffe de projet & design",
       summary:
-        "Site avec authentification, moteur de recherche et gestion de fiches. React en front, MySQL en base, le tout conteneurisé. Mon premier projet où j'ai tenu à la fois le rôle technique et l'organisation d'équipe.",
+        "Site d'un chauffeur VTC. Tout l'intérêt du projet tenait dans la réservation : prendre rendez-vous en ligne, tout de suite, et dire d'où on part sans avoir à taper une adresse à la main.",
+      highlights: [
+        "Prise de rendez-vous instantanée : le client choisit son créneau et repart avec une course confirmée, sans appel ni attente de réponse.",
+        "Carte de prise en charge : le point de départ se pose sur la carte, pour venir chercher le client là où il se trouve.",
+      ],
+      finding:
+        "La carte est ce qui m'a donné le plus de fil à retordre. Afficher une carte est simple ; la brancher sur le formulaire de réservation pour qu'un point posé à l'écran devienne une adresse de départ exploitable, beaucoup moins.",
+      findingLabel: "La partie difficile",
     },
     en: {
       title: "Pat VTC",
-      tagline: "Auth, search, records",
+      tagline: "Booking a ride without picking up the phone",
       role: "Project lead & design",
       summary:
-        "A site with authentication, a search engine and record management. React on the front, MySQL for the database, containerised. My first project where I held both the technical role and the team organisation.",
+        "A private-hire driver's site. The whole point of the project was the booking: making an appointment online, right away, and saying where you are leaving from without typing an address by hand.",
+      highlights: [
+        "Instant booking: the customer picks a slot and walks away with a confirmed ride, no phone call and no waiting for an answer.",
+        "Pick-up map: the starting point is dropped on the map, so the driver collects the customer wherever they are.",
+      ],
+      finding:
+        "The map is what gave me the most trouble. Displaying a map is easy; wiring it into the booking form so that a point dropped on screen becomes a usable pick-up address is much less so.",
+      findingLabel: "The hard part",
     },
   },
   {
@@ -235,6 +322,7 @@ export const projects = [
     track: "web",
     year: "2024",
     image: `${P}/lachtite.png`,
+    fit: "contain",
     link: "https://lachtitemarseillaise.com/",
     stack: ["Bubble", "Design"],
     fr: {
@@ -382,18 +470,21 @@ export const experience = [
   },
 ];
 
+// Langages, environnements et outils seulement : les bibliothèques d'un projet
+// se lisent dans le `stack` de ce projet, pas ici.
+// Chaque compétence pointe vers son site officiel, ou, à défaut de site, vers
+// la page la plus officielle qui existe (la norme ISO pour SQL, ECMA pour
+// JavaScript, le W3C pour HTML et CSS, kernel.org pour Linux).
 export const skillGroups = [
   {
     id: "data",
     fr: { title: "Data & analyse" },
     en: { title: "Data & analysis" },
     items: [
-      { name: "Python", img: `${P}/pythoned.png` },
-      { name: "pandas", img: null },
-      { name: "Jupyter", img: null },
-      { name: "SQL", img: `${P}/MySQL.svg` },
-      { name: "MariaDB", img: `${P}/maria.png` },
-      { name: "Matplotlib", img: null },
+      { name: "Python", img: `${P}/pythoned.png`, href: "https://www.python.org/" },
+      { name: "Jupyter", img: null, href: "https://jupyter.org/" },
+      { name: "SQL", img: `${P}/MySQL.svg`, href: "https://www.iso.org/standard/76583.html" },
+      { name: "MariaDB", img: `${P}/maria.png`, href: "https://mariadb.org/" },
     ],
   },
   {
@@ -401,12 +492,16 @@ export const skillGroups = [
     fr: { title: "Développement" },
     en: { title: "Development" },
     items: [
-      { name: "React", img: `${P}/logo192.png` },
-      { name: "JavaScript", img: null },
-      { name: "HTML / CSS", img: `${P}/html.png` },
-      { name: "Java", img: `${P}/java.png` },
-      { name: "Docker", img: null },
-      { name: "Linux", img: `${P}/LINUX.jpg` },
+      { name: "React", img: `${P}/logo192.png`, href: "https://react.dev/" },
+      {
+        name: "JavaScript",
+        img: null,
+        href: "https://ecma-international.org/publications-and-standards/standards/ecma-262/",
+      },
+      { name: "HTML / CSS", img: `${P}/html.png`, href: "https://www.w3.org/standards/" },
+      { name: "Java", img: `${P}/java.png`, href: "https://dev.java/" },
+      { name: "Docker", img: null, href: "https://www.docker.com/" },
+      { name: "Linux", img: `${P}/LINUX.jpg`, href: "https://www.kernel.org/" },
     ],
   },
   {
@@ -414,21 +509,21 @@ export const skillGroups = [
     fr: { title: "Produit & outils" },
     en: { title: "Product & tools" },
     items: [
-      { name: "Figma", img: `${P}/Figma.png` },
-      { name: "Bubble", img: `${P}/bubble.png` },
-      { name: "Shopify", img: `${P}/shopify.png` },
-      { name: "Trello", img: `${P}/trello.png` },
-      { name: "Workspace", img: `${P}/google.png` },
-      { name: "phpMyAdmin", img: `${P}/Phpmyadmin.png` },
+      { name: "Figma", img: `${P}/Figma.png`, href: "https://www.figma.com/" },
+      { name: "Bubble", img: `${P}/bubble.png`, href: "https://bubble.io/" },
+      { name: "Shopify", img: `${P}/shopify.png`, href: "https://www.shopify.com/" },
+      { name: "Trello", img: `${P}/trello.png`, href: "https://trello.com/" },
+      { name: "Workspace", img: `${P}/google.png`, href: "https://workspace.google.com/" },
+      { name: "phpMyAdmin", img: `${P}/Phpmyadmin.png`, href: "https://www.phpmyadmin.net/" },
     ],
   },
 ];
 
 export const personal = [
   { id: "bac", img: `${P}/bac.svg`, fr: "Bac général : Maths, Physique-Chimie, NSI.", en: "French baccalauréat: Maths, Physics-Chemistry, Computer Science." },
-  { id: "theatre", img: `${P}/theatre.svg`, fr: "6 ans de théâtre. Parler devant une salle ne me fait plus peur, présenter une analyse non plus.", en: "6 years of theatre. Speaking to a room doesn't scare me, and neither does presenting an analysis." },
+  { id: "theatre", img: `${P}/theatre.svg`, fr: "6 ans de théâtre.", en: "6 years of theatre." },
   { id: "chant", img: `${P}/chant.svg`, fr: "7 ans de chant.", en: "7 years of singing." },
-  { id: "sport", img: `${P}/sport.svg`, fr: "Je vais à la salle de sport pour ma santé, pour la discipline, et pour une meilleure version de moi-même.", en: "I go to the gym for my health, for the discipline, and for a better version of myself." },
+  { id: "sport", img: `${P}/sport.svg`, fr: "La salle de sport, pour la santé et la discipline.", en: "The gym, for health and discipline." },
 ];
 
 export const ui = {
@@ -436,8 +531,8 @@ export const ui = {
     role: "Étudiante en informatique · direction data",
     heroLead:
       "Je viens du développement web, je vais vers la data. Ce qui m'intéresse n'est pas le graphique, c'est la décision qu'il permet de prendre.",
-    availability: "Je suis en formation en alternance dans la tech, le digital et l'informatique. Ouverte aux contrats d'apprentissage ou de professionnalisation, aux stages alternés, comme aux CDD ou CDI à temps partiel.",
-    heroBefore: "Dans un jeu de données, je cherche",
+    availability: "Je cherche une alternance en contrat d'apprentissage, pour terminer mes études jusqu'en 2028.",
+    heroBefore: "Ce que je cherche, c'est",
     heroRotating: ["l'histoire", "le motif", "la décision", "la surprise"],
     heroCtaWork: "Voir mes projets",
     heroCtaContact: "Me contacter",
@@ -467,7 +562,7 @@ export const ui = {
     skillsTitle: "Compétences",
     personalTitle: "En dehors de l'écran",
     contactTitle: "Parlons-en",
-    contactLead: "Une question, une alternance, un jeu de données à explorer ? Écrivez-moi.",
+    contactLead: "Une question, une alternance, une idée de projet ? Une ligne suffit.",
     downloadCv: "Télécharger mon CV",
     switchLanguage: "EN",
     switchLanguageAria: "Passer le site en anglais",
@@ -478,8 +573,8 @@ export const ui = {
     role: "Computer science student · heading into data",
     heroLead:
       "I come from web development, I'm heading into data. What interests me isn't the chart, it's the decision it makes possible.",
-    availability: "I am training through an apprenticeship in tech, digital and computer science. Open to apprenticeship or professional-training contracts, alternating internships, as well as part-time fixed-term or permanent roles.",
-    heroBefore: "In a dataset, I look for",
+    availability: "I am looking for an apprenticeship contract to finish my degree, through to 2028.",
+    heroBefore: "What I look for is",
     heroRotating: ["the story", "the pattern", "the decision", "the surprise"],
     heroCtaWork: "See my work",
     heroCtaContact: "Get in touch",
@@ -509,7 +604,7 @@ export const ui = {
     skillsTitle: "Skills",
     personalTitle: "Away from the screen",
     contactTitle: "Let's talk",
-    contactLead: "A question, an apprenticeship, a dataset to dig into? Write to me.",
+    contactLead: "A question, an apprenticeship, a project idea? One line is enough.",
     downloadCv: "Download my CV",
     switchLanguage: "FR",
     switchLanguageAria: "Switch the site to French",

@@ -85,10 +85,13 @@ export default function About({ t, language }) {
                 <div key={group.id} className="skill-group">
                   <h4>{group[language].title}</h4>
                   <ul>
+                    {/* Chaque compétence mène à sa source officielle. */}
                     {group.items.map((item) => (
                       <li key={item.name}>
-                        {item.img && <img src={item.img} alt="" loading="lazy" />}
-                        <span>{item.name}</span>
+                        <a href={item.href} target="_blank" rel="noopener noreferrer">
+                          {item.img && <img src={item.img} alt="" loading="lazy" />}
+                          <span>{item.name}</span>
+                        </a>
                       </li>
                     ))}
                   </ul>

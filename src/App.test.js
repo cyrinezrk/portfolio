@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
-import { projects } from "./data/content";
+import { projects, skillGroups } from "./data/content";
 
 test("affiche le nom dans le hero", () => {
   render(<App />);
@@ -39,4 +39,17 @@ test("chaque écran est une section repérable par la navigation", () => {
 test("plus aucun tiret cadratin dans le texte affiché", () => {
   const { container } = render(<App />);
   expect(container.textContent).not.toMatch(/—/);
+});
+
+test("chaque compétence renvoie à une source officielle", () => {
+  const { container } = render(<App />);
+  const items = skillGroups.flatMap((g) => g.items);
+
+  items.forEach((item) => {
+    expect(item.href).toMatch(/^https:\/\//);
+  });
+
+  const links = [...container.querySelectorAll(".skill-group li a")];
+  expect(links).toHaveLength(items.length);
+  links.forEach((a) => expect(a).toHaveAttribute("href", expect.stringMatching(/^https:/)));
 });

@@ -42,9 +42,9 @@ export default function Contact({ t, language }) {
               <p className="eyebrow">{t.contactTitle}</p>
               <h2 className="section-title">
                 {language === "fr" ? (
-                  <>Un jeu de données<br />à <span className="magic">explorer</span> ?</>
+                  <>Écrivez-moi,<br />je <span className="magic">réponds</span></>
                 ) : (
-                  <>Got a dataset<br />to <span className="magic">explore</span>?</>
+                  <>Write to me,<br />I <span className="magic">reply</span></>
                 )}
               </h2>
               <p className="section-lead">{t.contactLead}</p>

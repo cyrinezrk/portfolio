@@ -86,10 +86,12 @@ Quand un écran entre dans le viewport, `useInView` lui pose la classe
 `is-live` et ses blocs montent l'un après l'autre (`App.css`). L'état retombe
 à la sortie, donc l'animation rejoue si l'on revient en arrière.
 
-Les onze projets tiennent dans un seul écran : un sommaire numéroté à gauche,
-la fiche complète à droite. Survoler ou cliquer une ligne change la fiche sur
-place, les flèches haut et bas parcourent la liste. Aucune fenêtre ne s'ouvre
-par-dessus la page, et les filtres de catégorie restent dans le même écran.
+Les projets tiennent dans un seul écran : un sommaire numéroté à gauche, la
+fiche complète à droite. Cliquer une ligne change la fiche sur place, les
+flèches haut et bas parcourent la liste. Le survol, lui, ne change rien : la
+souris qui traversait la liste en arrivant sur l'écran chassait JOJA, qui doit
+rester la première fiche affichée. Aucune fenêtre ne s'ouvre par-dessus la
+page, et les filtres de catégorie restent dans le même écran.
 
 `justify-content: safe center` est important : sur un écran bas, le contenu
 s'aligne en haut au lieu d'être rogné sous la barre de navigation.
@@ -108,6 +110,11 @@ s'aligne en haut au lieu d'être rogné sous la barre de navigation.
 - **Tout est sélectionnable.** Aucun `user-select: none`, chaque ligne du
   sommaire est un bouton, chaque ligne de parcours un lien, chaque écran
   atteignable par les étoiles latérales.
+- **Chaque compétence est un lien.** `skillGroups` ne liste que des langages,
+  des environnements et des outils, jamais les bibliothèques d'un projet :
+  celles-là se lisent dans le `stack` du projet. Chaque entrée porte un `href`
+  vers son site officiel, ou à défaut vers la page la plus officielle qui
+  existe (ISO pour SQL, ECMA pour JavaScript, W3C pour HTML et CSS).
 - **Pas de fenêtre modale.** Le détail d'un projet s'affiche dans l'écran,
   jamais par-dessus.
 - **Pas de tiret cadratin.** Un test le vérifie sur le rendu complet.
@@ -121,9 +128,11 @@ s'aligne en haut au lieu d'être rogné sous la barre de navigation.
       `repo` : ChatGPT × Majoli, Circle, Locatio, CogSpace, EcoSphere. Leur
       contenu est intact dans `data/content.js`, seule l'adresse manque.
 - [ ] Ajouter les visuels manquants des projets web dans `public/`, puis
-      renseigner leur champ `image` dans `data/content.js`. Ajouter
-      `fit: "contain"` pour un graphique ou une illustration, qu'il ne faut pas
-      rogner ; sans ce champ, l'image est recadrée comme une capture de site.
+      renseigner leur champ `image` dans `data/content.js`. Mettre
+      `fit: "contain"` dans presque tous les cas : une capture de page, un
+      graphique ou une illustration se montrent entiers, parce qu'un recadrage
+      leur retire justement ce qui les identifie. Sans ce champ, l'image est
+      rognée pour remplir la colonne, ce qui ne convient qu'à une photo.
 - [ ] Remplacer la capture de **CogSpace** : le visuel actuel est une photo
       d'un document texte, illisible en vignette.
 - [ ] Mettre à jour `public/CVCyrine.pdf`, qui date d'avant le virage data.

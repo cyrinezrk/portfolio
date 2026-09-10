@@ -123,11 +123,10 @@
   gap: 7px;
 }
 
+/* La pastille porte l'apparence, le lien porte la mise en page : toute la
+   surface de la pastille est cliquable et mène au site officiel. */
 .skill-group li {
   display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 6px 13px 6px 8px;
   border-radius: var(--r-pill);
   background: var(--surface);
   border: 1px solid var(--line);
@@ -137,11 +136,25 @@
     box-shadow 0.3s var(--ease);
 }
 
-.skill-group li:hover {
+.skill-group li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 13px 6px 8px;
+  border-radius: var(--r-pill);
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s var(--ease);
+}
+
+.skill-group li:hover,
+.skill-group li:focus-within {
   transform: translateY(-3px);
   border-color: var(--lilac-300);
   box-shadow: var(--shadow-md);
 }
+
+.skill-group li:hover a { color: var(--lilac-600); }
 
 .skill-group li img {
   width: 18px;
@@ -150,7 +163,7 @@
   border-radius: 4px;
 }
 
-.skill-group li:not(:has(img)) { padding-left: 13px; }
+.skill-group li a:not(:has(img)) { padding-left: 13px; }
 
 /* --- Hors écran ------------------------------------------------------- */
 

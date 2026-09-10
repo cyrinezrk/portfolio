@@ -171,6 +171,13 @@ h1, h2, h3, h4, p, li, span, strong, em, blockquote, figcaption, label, td, th {
   padding-inline: var(--gutter);
 }
 
+/* Les repères latéraux vivent dans la marge droite. Tant qu'ils sont affichés,
+   le contenu leur laisse la place : sinon l'étoile active et son libellé se
+   posent sur le texte de la partie qu'on est en train de lire. */
+@media (min-width: 901px) and (min-height: 661px) {
+  .frame-inner { padding-right: max(var(--gutter), 136px); }
+}
+
 @media (max-width: 900px), (max-height: 660px) {
   html { scroll-snap-type: none; }
   .frame {

@@ -171,11 +171,15 @@
   min-height: 220px;
 }
 
+/* Ce qui reste recadré est une photo ou une bannière, jamais une capture de
+   page : le sujet occupe le milieu de l'image, donc on garde le milieu. Les
+   captures de site, elles, passent par `is-contain` et se montrent entières. */
 .p-sheet-visual img,
 .p-sheet-visual .cover {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 /* Un graphique ou une gravure se montrent entiers, présentés comme une
@@ -201,23 +205,30 @@
 /* Une planche large a besoin de place : on lui donne un peu de la colonne. */
 .p-sheet.has-figure { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
 
+/* La zone qui défile est décollée des bords de la fiche : sa barre reste à
+   l'intérieur de la carte au lieu de buter contre l'angle arrondi. */
 .p-sheet-body {
-  padding: clamp(20px, 2.4vw, 32px);
-  padding-right: clamp(20px, 2.4vw, 32px);
-  padding-bottom: 52px;
+  margin: clamp(10px, 1.1vw, 15px);
+  margin-left: 0;
+  padding: clamp(16px, 2vw, 26px);
+  padding-bottom: 44px;
   overflow-y: auto;
-  max-height: min(60svh, 560px);
+  overflow-x: hidden;
+  max-height: min(58svh, 540px);
   scrollbar-width: thin;
   scrollbar-color: var(--line-strong) transparent;
+  scrollbar-gutter: stable;
   overscroll-behavior: contain;
 }
 
 /* La barre de défilement reste à l'intérieur de la fiche, discrète. */
-.p-sheet-body::-webkit-scrollbar { width: 6px; }
+.p-sheet-body::-webkit-scrollbar { width: 8px; }
 .p-sheet-body::-webkit-scrollbar-track { background: transparent; }
 .p-sheet-body::-webkit-scrollbar-thumb {
   background: var(--line-strong);
   border-radius: var(--r-pill);
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 .p-sheet-role {
@@ -411,7 +422,7 @@
   .projects-body { grid-template-columns: 1fr; }
   .p-sheet { grid-template-columns: 1fr; }
   .p-sheet-visual { min-height: 180px; aspect-ratio: 16 / 9; }
-  .p-sheet-body { max-height: none; overflow: visible; }
+  .p-sheet-body { max-height: none; overflow: visible; margin: 0; }
   .p-index {
     flex-direction: row;
     overflow-x: auto;

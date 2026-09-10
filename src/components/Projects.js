@@ -17,14 +17,16 @@ export default function Projects({ t, language }) {
 
   // Un projet qu'on ne peut pas aller voir n'a rien à faire ici : il faut un
   // site en ligne ou un dépôt. Ajouter `link` ou `repo` le fait réapparaître.
-  // Les projets data ouvrent ensuite la liste : c'est le message de la page.
-  const ordered = useMemo(
-    () =>
-      projects
-        .filter((p) => p.link || p.repo)
-        .sort((a, b) => Number(!!b.featured) - Number(!!a.featured)),
-    []
-  );
+  // Les projets data ouvrent la liste — c'est le message de la page — et JOJA
+  // passe devant : c'est lui qui s'affiche quand on arrive sur cet écran.
+  const ordered = useMemo(() => {
+    const shown = projects.filter((p) => p.link || p.repo);
+    return [
+      ...shown.filter((p) => p.id === "joja"),
+      ...shown.filter((p) => p.id !== "joja" && p.featured),
+      ...shown.filter((p) => p.id !== "joja" && !p.featured),
+    ];
+  }, []);
 
   const tracks = useMemo(() => ["all", ...new Set(ordered.map((p) => p.track))], [ordered]);
 
@@ -95,6 +97,8 @@ export default function Projects({ t, language }) {
         </header>
 
         <div className="projects-body">
+          {/* Le sommaire ne change de fiche qu'au clic : au survol, la souris qui
+              traverse la liste en arrivant sur l'écran chassait JOJA. */}
           <ol className="p-index" ref={listRef} onKeyDown={onListKey}>
             {visible.map((p, i) => (
               <li key={p.id}>
@@ -103,7 +107,6 @@ export default function Projects({ t, language }) {
                   data-id={p.id}
                   className={`p-item ${p.id === active.id ? "is-on" : ""}`}
                   onClick={() => setActiveId(p.id)}
-                  onMouseEnter={() => setActiveId(p.id)}
                   aria-current={p.id === active.id ? "true" : undefined}
                 >
                   <span className="p-num">{String(i + 1).padStart(2, "0")}</span>
