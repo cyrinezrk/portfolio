@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>CV — Cyrine Zarkouna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Outfit:wght@300..700&display=swap" rel="stylesheet">
+<style>
+/* =================================================================
+   CV — Cyrine Zarkouna · A4, une page.
+   Palette et typographie reprises de src/theme.css (le portfolio).
+   IMPRESSION : Ctrl+P → « Enregistrer au format PDF »
+                marges « Aucune » + cocher « Graphiques d'arrière-plan »
+   Le rectangle blanc à l'écran = la feuille A4 exacte.
+   ================================================================= */
+:root{
+  /* Violets du site, mais rabattus : le bandeau plein format saturait
+     beaucoup trop à l'impression. On garde la famille, pas l'intensité. */
+  --band:#554871;        /* bandeau d'en-tête, entre --ink et --ink-soft */
+  --accent:#6a5891;      /* titres, chiffres, pastilles du fil */
+  --accent-soft:#8a79b3;
+  --chip-bg:#efeaf7;
+  --chip-ink:#554871;
+  --aside-bg:#f8f6fc;
+  --ink:#2a1f3d;         /* tel quel depuis src/theme.css */
+  --ink-soft:#5b4c73;
+  --ink-faint:#8b7da3;
+  --line:#e5dff0;
+}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{
+  margin:0;background:#e7e3ee;
+  font-family:"Outfit",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:8.8pt;line-height:1.5;color:var(--ink);
+}
+.page{
+  width:210mm;height:297mm;margin:14mm auto;background:#fff;
+  box-shadow:0 4px 30px rgba(60,45,95,.18);
+  display:flex;flex-direction:column;
+}
+@page{size:A4;margin:0}
+@media print{ body{background:#fff} .page{margin:0;box-shadow:none} }
+
+/* ---------------- bandeau d'en-tête ---------------- */
+.masthead{background:var(--band);color:#f3f0f8;padding:12mm 15mm 8mm}
+.masthead h1{
+  font-family:"Fraunces",Georgia,serif;
+  font-size:27pt;font-weight:600;letter-spacing:.05em;
+  margin:0;color:#fff;line-height:1;
+}
+.tagline{
+  font-size:10.5pt;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;margin:3.4mm 0 0;color:#ece8f3;
+}
+.hair{height:.75pt;background:rgba(243,240,248,.38);margin:4mm 0 3.4mm}
+.contact{display:flex;flex-wrap:wrap;gap:0 5mm;font-size:8.2pt;color:rgba(243,240,248,.9);margin:0}
+.contact a{color:inherit;text-decoration:none}
+.contact span{white-space:nowrap}
+.contact .key{color:#fff;font-weight:600}
+
+/* ---------------- corps deux colonnes ---------------- */
+.body{flex:1;display:grid;grid-template-columns:1fr 70mm;gap:0;align-items:stretch}
+.main{padding:8mm 8mm 9mm 15mm}
+.aside{padding:8mm 12mm 9mm 9mm;background:var(--aside-bg);border-left:.75pt solid var(--line)}
+
+h2{
+  font-size:8pt;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 3.2mm;padding-bottom:1.4mm;
+  border-bottom:.75pt solid var(--line);
+}
+.aside h2{border-bottom-color:#e0d9ed}
+section{margin-bottom:6.5mm}
+section:last-child{margin-bottom:0}
+p{margin:0 0 1.8mm}
+p:last-child{margin-bottom:0}
+.n{color:var(--accent);font-weight:700}
+
+/* ---------------- expériences : fil vertical ---------------- */
+.entry{position:relative;padding-left:5.5mm;margin-bottom:4.6mm;page-break-inside:avoid}
+.entry:last-child{margin-bottom:0}
+.entry::before{content:"";position:absolute;left:0;top:1.6mm;width:1.8mm;height:1.8mm;border-radius:50%;background:var(--accent)}
+.entry::after{content:"";position:absolute;left:.85mm;top:4mm;bottom:-1.4mm;width:.5pt;background:var(--line)}
+.entry:last-child::after{display:none}
+.role{font-size:9.6pt;font-weight:700;margin:0;line-height:1.25}
+.org{color:var(--accent)}
+.meta{font-size:7.9pt;color:var(--ink-soft);margin:.7mm 0 1.8mm;letter-spacing:.02em}
+ul{margin:0;padding-left:3.6mm}
+li{margin-bottom:1.3mm}
+li:last-child{margin-bottom:0}
+li::marker{color:var(--accent-soft);font-size:.8em}
+
+/* ---------------- projets ---------------- */
+.proj{margin-bottom:4mm;page-break-inside:avoid}
+.proj:last-child{margin-bottom:0}
+.proj-name{font-size:9.4pt;font-weight:700;margin:0}
+.proj .meta{margin:.6mm 0 1.4mm}
+.repo{font-size:7.8pt;color:var(--ink-faint)}
+
+/* ---------------- formation ---------------- */
+.edu-row{display:flex;justify-content:space-between;gap:5mm;margin-bottom:1.8mm;font-size:8.6pt}
+.edu-row:last-child{margin-bottom:0}
+.edu-when{font-size:7.9pt;color:var(--ink-soft);white-space:nowrap;font-weight:600}
+
+/* ---------------- colonne de droite ---------------- */
+.aside p{font-size:8.5pt}
+.lead{font-size:8.6pt;line-height:1.55}
+.chip{
+  display:inline-block;background:var(--chip-bg);color:var(--chip-ink);
+  border-radius:1.4mm;padding:.7mm 1.9mm;margin:0 1mm 1.3mm 0;
+  font-size:7.6pt;font-weight:600;
+}
+.skill-group{margin-bottom:2.6mm}
+.skill-group:last-child{margin-bottom:0}
+.skill-label{font-size:7.4pt;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 1.2mm}
+.lang{display:flex;justify-content:space-between;font-size:8.4pt;margin-bottom:.9mm}
+.lang:last-child{margin-bottom:0}
+.lang b{font-weight:600}
+.lang span{color:var(--ink-soft);font-size:7.9pt}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead">
+    <h1>Cyrine Zarkouna</h1>
+    <p class="tagline">Développement web &rarr; Data Engineering</p>
+    <div class="hair"></div>
+    <p class="contact">
+      <span class="key">cyrine.zarkouna@gmail.com</span>
+      <span>06 49 10 21 91</span>
+      <span>Marseille 4<sup>e</sup></span>
+      <span><a href="https://github.com/cyrinezark">github.com/cyrinezark</a></span>
+      <span><a href="https://www.linkedin.com/in/cyrine-zarkouna-6022301b1">linkedin.com/in/cyrine-zarkouna</a></span>
+      <span><a href="https://cyrinezrk.github.io/portfolio/">cyrinezrk.github.io/portfolio</a></span>
+    </p>
+  </div>
+
+  <div class="body">
+
+    <!-- ============ COLONNE PRINCIPALE ============ -->
+    <div class="main">
+
+      <section>
+        <h2>Expériences professionnelles</h2>
+
+        <div class="entry">
+          <p class="role">Développeuse web <span class="org">&mdash; Majoli</span></p>
+          <p class="meta">Alternance &middot; juil.&nbsp;2023 &rarr; nov.&nbsp;2024, puis avril&nbsp;2025 &rarr; aujourd'hui<br>Plateforme de domiciliation et de création d'entreprise</p>
+          <ul>
+            <li><span class="n">14 sites et applications livrés</span>, en équipe et en solo, du cadrage à la mise en production, en React et Next.js.</li>
+            <li>Sites e-commerce menés <b>de A à Z</b>&nbsp;: maquettes, catalogue, compte client, panier et paiement en ligne.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <p class="role">Cheffe de projet web <span class="org">&mdash; We Are Jolies</span></p>
+          <p class="meta">Alternance &middot; nov.&nbsp;2024 &rarr; avril&nbsp;2025<br>Marque de lingerie et de maillots de bain, e-commerce Shopify</p>
+          <ul>
+            <li>Suivi hebdomadaire des indicateurs&nbsp;: trafic, taux de conversion, panier moyen, produits qui tournent et produits qui dorment.</li>
+            <li>Tableaux de bord automatisés sur Google&nbsp;Apps&nbsp;Script&nbsp;: fin de la recopie manuelle, chiffres à jour sans intervention.</li>
+            <li>Référencement, maintenance et service après-vente&nbsp;; <b>c'est là que j'ai basculé vers la data</b>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Projets data</h2>
+
+        <div class="proj">
+          <p class="proj-name">JOJA <span class="org">&mdash; <span class="n">3,2&nbsp;M</span> de commandes analysées</span></p>
+          <p class="meta">Epitech, en équipe &middot; pandas, Jupyter, Docker, pytest &middot; <span class="repo">github.com/cyrinezark/joja</span></p>
+          <p>Le frais est dans <span class="n">75&nbsp;%</span> des commandes mais réachète le moins du top&nbsp;4 (<span class="n">49&nbsp;%</span>)&nbsp;: ce sont les laitiers qui construisent la fidélité, et ils sont sous-exploités.</p>
+        </div>
+
+        <div class="proj">
+          <p class="proj-name">Bookworm <span class="org">&mdash; moteur NLP de fiches de lecture</span></p>
+          <p class="meta">Epitech &middot; spaCy, gensim, sumy &middot; <span class="repo">github.com/cyrinezark/alice-in-wonderland</span></p>
+          <p>Personnages et lieux par reconnaissance d'entités nommées, thèmes par LDA, trois algorithmes de résumé comparés.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Formation</h2>
+        <div class="edu-row"><span><b>Pré-MSc &amp; Master of Science</b> Digital Engineering &amp; Data Systems &mdash; Epitech</span><span class="edu-when">2025 &rarr; 2028</span></div>
+        <div class="edu-row"><span><b>Bachelor Informatique</b> (L2 &amp; L3) &mdash; Institut G4, Marseille</span><span class="edu-when">2023 &rarr; 2025</span></div>
+        <div class="edu-row"><span><b>Licence 1 Informatique</b> &mdash; Université de Montpellier</span><span class="edu-when">2022 &rarr; 2023</span></div>
+        <div class="edu-row"><span><b>Baccalauréat général</b> &mdash; Maths, Physique-Chimie, NSI</span><span class="edu-when">2022</span></div>
+      </section>
+
+    </div>
+
+    <!-- ============ COLONNE DE DROITE ============ -->
+    <div class="aside">
+
+      <section>
+        <h2>Profil</h2>
+        <p class="lead">Trois ans à livrer des projets web, puis le déclic côté e-commerce&nbsp;: lire ce que les chiffres d'une boutique racontent vraiment.</p>
+        <p class="lead">Ce qui m'intéresse n'est pas le graphique, c'est la décision qu'il permet de prendre.</p>
+      </section>
+
+      <section>
+        <h2>Alternance</h2>
+        <p>Recherchée pour mon Master of Science à Epitech.</p>
+        <p style="margin-top:1.4mm"><b>6&nbsp;semaines</b> en entreprise (lundi à l'école)<br><b>2&nbsp;semaines</b> à l'école</p>
+        <p style="margin-top:1.4mm;color:var(--ink-soft);font-size:7.9pt">Disponible sous un mois de préavis.</p>
+      </section>
+
+      <section>
+        <h2>Compétences</h2>
+        <div class="skill-group">
+          <p class="skill-label">Data</p>
+          <span class="chip">Python</span><span class="chip">pandas</span><span class="chip">SQL</span><span class="chip">MongoDB</span><span class="chip">KPI &amp; reporting</span><span class="chip">NLP</span>
+        </div>
+        <div class="skill-group">
+          <p class="skill-label">Développement</p>
+          <span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Node.js</span>
+        </div>
+        <div class="skill-group">
+          <p class="skill-label">Outils</p>
+          <span class="chip">Git</span><span class="chip">Docker</span><span class="chip">Linux</span><span class="chip">AWS</span><span class="chip">Figma</span><span class="chip">Shopify</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Langues</h2>
+        <p class="lang"><b>Français</b><span>Courant</span></p>
+        <p class="lang"><b>Anglais</b><span>Courant</span></p>
+        <p class="lang"><b>Arabe</b><span>Courant</span></p>
+      </section>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
