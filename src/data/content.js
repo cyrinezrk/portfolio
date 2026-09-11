@@ -419,7 +419,7 @@ export const projects = [
     // et ce qui le pousse en dernier.
     id: "jobzz",
     comingSoon: true,
-    track: "web",
+    track: "data",
     year: "2026",
     image: null,
     cover: "veil",
