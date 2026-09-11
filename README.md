@@ -104,9 +104,6 @@ s'aligne en haut au lieu d'être rogné sous la barre de navigation.
   (`theme.css`) suffit et pèse moins lourd qu'une dépendance.
 - **Animations désactivables.** Tout est derrière
   `prefers-reduced-motion: reduce`.
-- **Pas de capture d'écran pour les projets data.** Un projet d'analyse se
-  montre par ses chiffres et son résultat, pas par une image de notebook :
-  `ProjectCover.js` dessine un motif à la place.
 - **Tout est sélectionnable.** Aucun `user-select: none`, chaque ligne du
   sommaire est un bouton, chaque ligne de parcours un lien, chaque écran
   atteignable par les étoiles latérales.
@@ -117,24 +114,12 @@ s'aligne en haut au lieu d'être rogné sous la barre de navigation.
   existe (ISO pour SQL, ECMA pour JavaScript, W3C pour HTML et CSS).
 - **Pas de fenêtre modale.** Le détail d'un projet s'affiche dans l'écran,
   jamais par-dessus.
-- **Pas de tiret cadratin.** Un test le vérifie sur le rendu complet.
 - **Un projet doit être consultable.** `Projects.js` masque toute entrée sans
   `link` ni `repo` : rien ne s'affiche qu'on ne puisse aller voir. Renseigner
   l'un des deux suffit à le faire réapparaître, sans toucher au composant.
 
 ## À faire
 
-- [ ] Redonner un lien aux projets actuellement masqués faute de `link` ou de
-      `repo` : ChatGPT × Majoli, Circle, Locatio, CogSpace, EcoSphere. Leur
-      contenu est intact dans `data/content.js`, seule l'adresse manque.
-- [ ] Ajouter les visuels manquants des projets web dans `public/`, puis
-      renseigner leur champ `image` dans `data/content.js`. Mettre
-      `fit: "contain"` dans presque tous les cas : une capture de page, un
-      graphique ou une illustration se montrent entiers, parce qu'un recadrage
-      leur retire justement ce qui les identifie. Sans ce champ, l'image est
-      rognée pour remplir la colonne, ce qui ne convient qu'à une photo.
-- [ ] Remplacer la capture de **CogSpace** : le visuel actuel est une photo
-      d'un document texte, illisible en vignette.
 - [ ] Mettre à jour `public/CVCyrine.pdf`, qui date d'avant le virage data.
 
 ## Auteur
