@@ -405,7 +405,6 @@
   padding: 15px 18px;
   border-radius: var(--r-md);
   background: linear-gradient(140deg, var(--lilac-50), var(--pink-100) 160%);
-  border-left: 3px solid var(--pink-300);
 }
 
 .finding-label {

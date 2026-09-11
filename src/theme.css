@@ -3,7 +3,8 @@
    Un lilas très clair comme fond, du rose pour l'accent, beaucoup d'air.
  * ------------------------------------------------------------------ */
 
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Outfit:wght@300..800&family=Space+Grotesk:wght@400;500;700&display=swap");
+/* Les polices sont déclarées dans public/index.html : un @import ici
+   retarde leur téléchargement du temps de lire cette feuille. */
 
 :root {
   /* Fonds */

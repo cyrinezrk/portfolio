@@ -101,14 +101,17 @@ export default function About({ t, language }) {
           </div>
         </div>
 
-        <ul className="personal">
-          {personal.map((p) => (
-            <li key={p.id}>
-              <img src={p.img} alt="" loading="lazy" />
-              <p>{p[language]}</p>
-            </li>
-          ))}
-        </ul>
+        <div className="about-personal">
+          <h3 className="block-title">{t.personalTitle}</h3>
+          <ul className="personal">
+            {personal.map((p) => (
+              <li key={p.id}>
+                <img src={p.img} alt="" loading="lazy" />
+                <p>{p[language]}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

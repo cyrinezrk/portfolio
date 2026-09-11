@@ -167,20 +167,28 @@
 
 /* --- Hors écran ------------------------------------------------------- */
 
+/* Le filet et le titre appartiennent au bloc, pas à la liste : sinon le
+   titre passerait au-dessus du trait de séparation. */
+.about-personal {
+  padding-top: clamp(14px, 2vh, 24px);
+  border-top: 1px solid var(--line);
+}
+
 .personal {
   list-style: none;
   margin: 0;
-  padding-top: clamp(14px, 2vh, 24px);
-  border-top: 1px solid var(--line);
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 18px;
 }
 
+/* La phrase se cale sur le milieu de l'icône. Alignée en haut, elle
+   partait plus haut que le dessin et la ligne paraissait bancale. */
 .personal li {
   display: flex;
   gap: 13px;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .personal img {

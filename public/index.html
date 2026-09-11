@@ -3,28 +3,28 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#fbf7ff" />
+    <meta name="theme-color" content="#120e20" />
 
     <!-- Icônes : le piment, partout. logo192/512 sont les logos de Create
          React App, gardés uniquement parce que content.js s'en sert comme
          icône de la techno React — ils ne représentent pas le site. -->
-    <!-- Le thème est posé sur <html> avant le premier rendu. Sans ça, un
-         visiteur en mode nuit verrait la page s'afficher en clair pendant
-         un instant, le temps que React démarre. -->
+    <!-- Le thème est posé sur <html> avant le premier rendu. Sans ça, la
+         page s'afficherait en clair pendant un instant, le temps que React
+         démarre. Le site est de nuit par défaut : seul un choix explicite
+         de mode clair, retenu d'une visite à l'autre, le ramène au jour. -->
     <script>
       (function () {
+        var light = false;
         try {
-          var t = localStorage.getItem("portfolio:theme");
-          if (t === "dark" || t === "light") {
-            document.documentElement.dataset.theme = t;
-            if (t === "dark") {
-              document
-                .querySelector('meta[name="theme-color"]')
-                .setAttribute("content", "#120e20");
-            }
-          }
+          light = localStorage.getItem("portfolio:theme") === "light";
         } catch (e) {
-          /* stockage bloqué : le site s'ouvre en clair */
+          /* stockage bloqué : on ouvre de nuit */
+        }
+        document.documentElement.dataset.theme = light ? "light" : "dark";
+        if (light) {
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#fbf7ff");
         }
       })();
     </script>
@@ -42,6 +42,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Outfit:wght@300..800&family=Space+Grotesk:wght@400;500;700&display=swap"
+    />
 
     <!-- Partage de lien. og:image doit être une URL absolue : les robots des
          réseaux sociaux ne résolvent pas les chemins relatifs. Sans cette

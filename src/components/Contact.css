@@ -146,35 +146,62 @@
 
 /* --- Ce que je cherche ----------------------------------------------- */
 
+/* Un mot épinglé de travers, qu'on redresse en passant dessus. Le voyant
+   vert d'avant disait « disponible » comme un statut de messagerie ; le
+   macaron dit la même chose avec le ton du reste de la page. */
 .availability {
-  display: flex;
-  align-items: flex-start;
-  gap: 11px;
-  margin-top: 22px;
-  padding: 14px 18px;
+  position: relative;
+  margin-top: 26px;
+  padding: 16px 18px 15px;
   border-radius: var(--r-md);
   background: linear-gradient(140deg, var(--lilac-50), var(--pink-100) 190%);
   border: 1px solid var(--line);
   font-size: 13.5px;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--ink-soft);
+  rotate: -0.7deg;
+  transform-origin: 18% 0;
+  transition: rotate 0.45s var(--ease), box-shadow 0.45s var(--ease);
 }
 
-.availability-dot {
-  flex: none;
-  width: 8px;
-  height: 8px;
-  margin-top: 7px;
-  border-radius: 50%;
-  background: var(--ok);
-  box-shadow: 0 0 0 0 var(--ok-pulse);
-  animation: pulse-dot 2.4s ease-out infinite;
+.availability:hover {
+  rotate: 0deg;
+  box-shadow: var(--shadow-md);
 }
 
-@keyframes pulse-dot {
-  0% { box-shadow: 0 0 0 0 var(--ok-pulse); }
-  70% { box-shadow: 0 0 0 9px var(--ok-pulse-out); }
-  100% { box-shadow: 0 0 0 0 var(--ok-pulse-out); }
+.availability-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: 9px;
+  padding: 3px 10px 3px 11px;
+  border-radius: var(--r-pill);
+  background: linear-gradient(120deg, var(--lilac-400), var(--pink-300));
+  color: var(--on-accent);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  vertical-align: 2px;
+}
+
+.availability-tag svg {
+  width: 9px;
+  height: 9px;
+  fill: currentColor;
+  animation: tag-twinkle 2.8s ease-in-out infinite;
+}
+
+@keyframes tag-twinkle {
+  0%, 100% { opacity: 0.55; scale: 0.85; rotate: 0deg; }
+  50% { opacity: 1; scale: 1; rotate: 90deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .availability { rotate: 0deg; }
+  .availability-tag svg { animation: none; opacity: 1; }
 }
 
 /* --- Téléphone ------------------------------------------------------- */

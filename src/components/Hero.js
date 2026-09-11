@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./Hero.css";
 
 /* Poussière lumineuse : de petites étoiles qui s'allument et s'éteignent. */
@@ -109,6 +109,86 @@ function Orbs({ count = 9 }) {
   );
 }
 
+/*
+ * Une lueur qui suit la souris, avec du retard.
+ *
+ * Elle ne colle pas au curseur : à chaque image, elle avance d'une fraction
+ * de la distance qui l'en sépare, ce qui lui donne son inertie. Deux couches
+ * à deux vitesses, pour que la traîne se voie.
+ *
+ * Rien n'est écrit dans l'état React : une position de souris change soixante
+ * fois par seconde et redessinerait le hero à chaque fois. On écrit
+ * directement dans le style du nœud, hors du cycle de rendu.
+ */
+function MouseHalo() {
+  const host = useRef(null);
+
+  useEffect(() => {
+    const box = host.current;
+    if (!box) return undefined;
+
+    // Pas de souris à suivre sur un écran tactile, et pas de mouvement
+    // pour qui a demandé qu'on lui en épargne.
+    const fine = window.matchMedia("(pointer: fine)");
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!fine.matches || still.matches) return undefined;
+
+    const layers = [
+      { node: box.querySelector(".hero-halo-wide"), ease: 0.055, x: 0, y: 0 },
+      { node: box.querySelector(".hero-halo-core"), ease: 0.13, x: 0, y: 0 },
+    ];
+
+    const frame = box.parentElement;
+    let targetX = 0;
+    let targetY = 0;
+    let placed = false;
+    let raf = 0;
+
+    const aim = (event) => {
+      const r = frame.getBoundingClientRect();
+      targetX = event.clientX - r.left;
+      targetY = event.clientY - r.top;
+      if (!placed) {
+        // Première apparition : on se pose sous le curseur au lieu de
+        // traverser tout l'écran depuis le coin.
+        layers.forEach((l) => { l.x = targetX; l.y = targetY; });
+        placed = true;
+      }
+      box.classList.add("is-on");
+    };
+
+    const leave = () => box.classList.remove("is-on");
+
+    const tick = () => {
+      layers.forEach((l) => {
+        l.x += (targetX - l.x) * l.ease;
+        l.y += (targetY - l.y) * l.ease;
+        l.node.style.translate = `${l.x}px ${l.y}px`;
+      });
+      raf = requestAnimationFrame(tick);
+    };
+
+    frame.addEventListener("pointermove", aim);
+    frame.addEventListener("pointerenter", aim);
+    frame.addEventListener("pointerleave", leave);
+    raf = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      frame.removeEventListener("pointermove", aim);
+      frame.removeEventListener("pointerenter", aim);
+      frame.removeEventListener("pointerleave", leave);
+    };
+  }, []);
+
+  return (
+    <div className="hero-halo" ref={host} aria-hidden="true">
+      <span className="hero-halo-wide" />
+      <span className="hero-halo-core" />
+    </div>
+  );
+}
+
 /* Le mot de fin de phrase change tout seul, avec un fondu vertical. */
 function RotatingWord({ words }) {
   const [index, setIndex] = useState(0);
@@ -152,6 +232,7 @@ export default function Hero({ t }) {
       </div>
       <Orbs />
       <Sparkles />
+      <MouseHalo />
 
       <div className="frame-inner hero-inner">
         <p className="eyebrow hero-eyebrow">{t.role}</p>

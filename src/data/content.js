@@ -22,7 +22,7 @@ export const projects = [
     featured: true,
     track: "data",
     year: "2026",
-    image: `${P}/joja.png`,
+    image: `${P}/joja.webp`,
     fit: "contain",
     repo: "https://github.com/cyrinezark/joja",
     stack: ["Python", "pandas", "Jupyter", "Docker", "pytest", "Sphinx"],
@@ -83,7 +83,7 @@ export const projects = [
     featured: true,
     track: "data",
     year: "2026",
-    image: `${P}/alice.png`,
+    image: `${P}/alice.webp`,
     fit: "contain",
     repo: "https://github.com/cyrinezark/alice-in-wonderland",
     stack: ["Python", "spaCy", "gensim", "sumy", "NLTK", "uv"],
@@ -135,7 +135,7 @@ export const projects = [
     id: "majoli-gpt",
     track: "ia",
     year: "2025",
-    image: `${P}/majolichat.png`,
+    image: `${P}/majolichat.webp`,
     link: null,
     stack: ["OpenAI API", "Prompt engineering", "Automatisation"],
     fr: {
@@ -157,7 +157,7 @@ export const projects = [
     id: "waj",
     track: "data",
     year: "2024",
-    image: `${P}/waj2.png`,
+    image: `${P}/waj2.webp`,
     link: "https://wearejolies.com/",
     stack: ["KPI", "Google Sheets", "Automatisation", "SAV"],
     fr: {
@@ -197,7 +197,7 @@ export const projects = [
     id: "caninmarin",
     track: "web",
     year: "2026",
-    image: `${P}/caninmarin.png`,
+    image: `${P}/caninmarin.webp`,
     fit: "contain",
     link: "https://caninmarin.fr/",
     stack: ["Next.js", "React", "Stripe"],
@@ -236,7 +236,7 @@ export const projects = [
     id: "kidskreol",
     track: "web",
     year: "2026",
-    image: `${P}/kidskreol.png`,
+    image: `${P}/kidskreol.webp`,
     fit: "contain",
     link: "https://kidskreol.re/",
     stack: ["Next.js", "React", "Tailwind"],
@@ -269,7 +269,7 @@ export const projects = [
     id: "circle",
     track: "web",
     year: "2025",
-    image: `${P}/circle.png`,
+    image: `${P}/circle.webp`,
     link: null,
     stack: ["React", "Next.js", "TypeScript", "Tailwind"],
     fr: {
@@ -291,7 +291,7 @@ export const projects = [
     id: "patvtc",
     track: "web",
     year: "2024",
-    image: `${P}/patvtc.png`,
+    image: `${P}/patvtc.webp`,
     fit: "contain",
     link: "https://patvtc.fr/",
     stack: ["React", "MySQL", "Docker", "DBeaver"],
@@ -328,7 +328,7 @@ export const projects = [
     id: "lachtite",
     track: "web",
     year: "2024",
-    image: `${P}/lachtite.png`,
+    image: `${P}/lachtite.webp`,
     fit: "contain",
     link: "https://lachtitemarseillaise.com/",
     stack: ["Bubble", "Design"],
@@ -351,7 +351,7 @@ export const projects = [
     id: "locatio",
     track: "web",
     year: "2024",
-    image: `${P}/locatio.png`,
+    image: `${P}/locatio.webp`,
     link: null,
     stack: ["Bubble", "Base de données", "Workflows"],
     fr: {
@@ -373,7 +373,7 @@ export const projects = [
     id: "cogspace",
     track: "web",
     year: "2024",
-    image: `${P}/cogspace.png`,
+    image: `${P}/cogspace.webp`,
     link: null,
     stack: ["Vue.js", "Gamification", "IA"],
     fr: {
@@ -395,7 +395,7 @@ export const projects = [
     id: "ecosphere",
     track: "web",
     year: "2024",
-    image: `${P}/ecoservice.png`,
+    image: `${P}/ecoservice.webp`,
     link: null,
     stack: ["Front-end", "Conception produit"],
     fr: {
@@ -450,7 +450,7 @@ export const projects = [
 export const education = [
   {
     id: "epitech",
-    logo: `${P}/epitech.png`,
+    logo: `${P}/epitech.webp`,
     href: "https://www.epitech.eu/",
     name: "Epitech",
     fr: { period: "2025 › 2028", detail: "Pré-MSc & Master of Science" },
@@ -458,7 +458,7 @@ export const education = [
   },
   {
     id: "g4",
-    logo: `${P}/g4.png`,
+    logo: `${P}/g4.webp`,
     href: "https://institut-g4.fr/",
     name: "Institut G4",
     fr: { period: "2023 › 2025", detail: "Bachelor Informatique, L2 & L3" },
@@ -466,7 +466,7 @@ export const education = [
   },
   {
     id: "montpellier",
-    logo: `${P}/montpellier.png`,
+    logo: `${P}/montpellier.webp`,
     href: "https://www.umontpellier.fr/",
     name: "Université de Montpellier",
     fr: { period: "2022 › 2023", detail: "L1 Informatique" },
@@ -477,7 +477,7 @@ export const education = [
 export const experience = [
   {
     id: "majoli",
-    logo: `${P}/majoli.png`,
+    logo: `${P}/majoli.webp`,
     href: "https://www.majoli.io/",
     name: "Majoli",
     fr: {
@@ -493,7 +493,7 @@ export const experience = [
   },
   {
     id: "waj",
-    logo: `${P}/waj.png`,
+    logo: `${P}/waj.webp`,
     href: "https://wearejolies.com/",
     name: "We Are Jolies",
     fr: {
@@ -520,10 +520,10 @@ export const skillGroups = [
     fr: { title: "Data & analyse" },
     en: { title: "Data & analysis" },
     items: [
-      { name: "Python", img: `${P}/pythoned.png`, href: "https://www.python.org/" },
+      { name: "Python", img: `${P}/pythoned.webp`, href: "https://www.python.org/" },
       { name: "Jupyter", img: null, href: "https://jupyter.org/" },
       { name: "SQL", img: `${P}/MySQL.svg`, href: "https://www.iso.org/standard/76583.html" },
-      { name: "MariaDB", img: `${P}/maria.png`, href: "https://mariadb.org/" },
+      { name: "MariaDB", img: `${P}/maria.webp`, href: "https://mariadb.org/" },
     ],
   },
   {
@@ -537,10 +537,10 @@ export const skillGroups = [
         img: null,
         href: "https://ecma-international.org/publications-and-standards/standards/ecma-262/",
       },
-      { name: "HTML / CSS", img: `${P}/html.png`, href: "https://www.w3.org/standards/" },
-      { name: "Java", img: `${P}/java.png`, href: "https://dev.java/" },
+      { name: "HTML / CSS", img: `${P}/html.webp`, href: "https://www.w3.org/standards/" },
+      { name: "Java", img: `${P}/java.webp`, href: "https://dev.java/" },
       { name: "Docker", img: null, href: "https://www.docker.com/" },
-      { name: "Linux", img: `${P}/LINUX.jpg`, href: "https://www.kernel.org/" },
+      { name: "Linux", img: `${P}/LINUX.webp`, href: "https://www.kernel.org/" },
     ],
   },
   {
@@ -548,12 +548,12 @@ export const skillGroups = [
     fr: { title: "Produit & outils" },
     en: { title: "Product & tools" },
     items: [
-      { name: "Figma", img: `${P}/Figma.png`, href: "https://www.figma.com/" },
-      { name: "Bubble", img: `${P}/bubble.png`, href: "https://bubble.io/" },
-      { name: "Shopify", img: `${P}/shopify.png`, href: "https://www.shopify.com/" },
-      { name: "Trello", img: `${P}/trello.png`, href: "https://trello.com/" },
-      { name: "Workspace", img: `${P}/google.png`, href: "https://workspace.google.com/" },
-      { name: "phpMyAdmin", img: `${P}/Phpmyadmin.png`, href: "https://www.phpmyadmin.net/" },
+      { name: "Figma", img: `${P}/Figma.webp`, href: "https://www.figma.com/" },
+      { name: "Bubble", img: `${P}/bubble.webp`, href: "https://bubble.io/" },
+      { name: "Shopify", img: `${P}/shopify.webp`, href: "https://www.shopify.com/" },
+      { name: "Trello", img: `${P}/trello.webp`, href: "https://trello.com/" },
+      { name: "Workspace", img: `${P}/google.webp`, href: "https://workspace.google.com/" },
+      { name: "phpMyAdmin", img: `${P}/Phpmyadmin.webp`, href: "https://www.phpmyadmin.net/" },
     ],
   },
 ];
@@ -570,6 +570,7 @@ export const ui = {
     role: "Étudiante en informatique · direction data",
     heroLead:
       "Je viens du développement web, je vais vers la data. Ce qui m'intéresse n'est pas le graphique, c'est la décision qu'il permet de prendre.",
+    availabilityTag: "Avis de recherche",
     availability: "Je cherche une alternance en contrat d'apprentissage, pour terminer mes études jusqu'en 2028.",
     heroBefore: "Ce que je cherche, c'est",
     heroRotating: ["l'histoire", "le motif", "la décision", "la surprise"],
@@ -616,6 +617,7 @@ export const ui = {
     role: "Computer science student · heading into data",
     heroLead:
       "I come from web development, I'm heading into data. What interests me isn't the chart, it's the decision it makes possible.",
+    availabilityTag: "Wanted",
     availability: "I am looking for an apprenticeship contract to finish my degree, through to 2028.",
     heroBefore: "What I look for is",
     heroRotating: ["the story", "the pattern", "the decision", "the surprise"],

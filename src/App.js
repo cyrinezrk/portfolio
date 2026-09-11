@@ -43,18 +43,17 @@ export default function App() {
 
   const toggleLanguage = () => setLanguage((l) => (l === "fr" ? "en" : "fr"));
 
-  /* Le site reste clair par défaut : le mode nuit est un choix, pas un
-     réglage deviné depuis le système. Une fois choisi, il est retenu.
+  /* Le site s'ouvre de nuit. Le mode clair reste à un clic, et le choix
+     est retenu d'une visite à l'autre.
      La valeur est déjà posée sur <html> par le script d'index.html, avant
-     le premier rendu, sinon la page clignoterait en blanc au chargement. */
+     le premier rendu, sinon la page clignoterait en clair au chargement. */
   const [theme, setTheme] = useState(() => {
     try {
-      const saved = window.localStorage.getItem(THEME_KEY);
-      if (saved === "light" || saved === "dark") return saved;
+      if (window.localStorage.getItem(THEME_KEY) === "light") return "light";
     } catch {
-      /* stockage bloqué : on ouvre en clair */
+      /* stockage bloqué : on ouvre de nuit, comme tout le monde */
     }
-    return "light";
+    return "dark";
   });
 
   useEffect(() => {
