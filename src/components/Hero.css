@@ -43,7 +43,7 @@
   color: var(--pink-300);
 }
 
-/* --- Phrase à mot tournant ------------------------------------------ */
+/* --- Phrase d'accroche ------------------------------------------------ */
 
 .hero-phrase {
   margin-top: 22px;
@@ -52,30 +52,6 @@
   color: var(--ink);
   opacity: 0;
   animation: rise 1s var(--ease) 0.54s forwards;
-}
-
-.rotator {
-  position: relative;
-  display: inline-grid;
-  vertical-align: bottom;
-}
-
-/* Copie invisible du mot le plus long : elle réserve la place. */
-.rotator-ghost {
-  grid-area: 1 / 1;
-  visibility: hidden;
-  font-family: var(--font-display);
-  font-style: italic;
-}
-
-.rotator-word {
-  grid-area: 1 / 1;
-  animation: word-in 0.6s var(--ease) both;
-}
-
-@keyframes word-in {
-  from { opacity: 0; transform: translateY(0.45em) rotate(2deg); }
-  to { opacity: 1; transform: none; }
 }
 
 .hero-lead {
@@ -299,11 +275,7 @@
   .blob.b3 { display: none; }
 }
 
-/* --- Téléphone ------------------------------------------------------- *
-   Une colonne étroite se lit mieux centrée : le nom, la phrase, les deux
-   boutons et les réseaux tiennent sur un axe. Les boutons prennent toute la
-   largeur, c'est ce qu'un pouce attend.
- * ------------------------------------------------------------------- */
+/* --- Téléphone ------------------------------------------------------- */
 
 @media (max-width: 760px) {
   .hero-inner { text-align: center; }
@@ -328,22 +300,18 @@
   .hero-social { justify-content: center; margin-top: 26px; }
   .hero-social a { width: 46px; height: 46px; }
 
-  /* Deux formes suffisent : la troisième ne ferait qu'assombrir le texte. */
   .blob.b2 { display: none; }
   .blob.b1 { width: min(88vw, 460px); height: min(88vw, 460px); opacity: 0.6; }
 }
 
-/* La flèche de défilement reste utile sur téléphone, où une partie occupe
-   encore l'écran entier. On ne la retire que sur un écran bas, où elle
-   viendrait buter dans les réseaux sociaux. */
+/* Retirée seulement sur un écran bas, où elle buterait dans les réseaux. */
 @media (max-height: 700px) {
   .hero-scroll { display: none; }
 }
 
 /* --- Lueur qui suit la souris ---------------------------------------- *
-   Posée entre les formes du fond (0) et la poussière d'étoiles (2), donc
-   toujours derrière le titre. `translate` est écrit par le script à chaque
-   image : aucune transition CSS ici, elle se battrait avec lui.
+   `translate` est écrit par le script à chaque image : pas de transition
+   CSS ici, elle se battrait avec lui.
  * ------------------------------------------------------------------ */
 
 .hero-halo {
@@ -383,7 +351,6 @@
   filter: blur(18px);
 }
 
-/* Sans souris à suivre, la lueur n'a pas lieu d'être. */
 @media (pointer: coarse), (prefers-reduced-motion: reduce) {
   .hero-halo { display: none; }
 }

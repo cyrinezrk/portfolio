@@ -1,10 +1,6 @@
 import React, { useMemo } from "react";
 import "./StarField.css";
 
-/*
- * Des étoiles timides, semées sur toute la page. Elles restent derrière le
- * contenu et ne captent jamais le pointeur.
- */
 export default function StarField({ count = 42 }) {
   const stars = useMemo(
     () =>

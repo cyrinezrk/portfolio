@@ -12,8 +12,7 @@ import "./App.css";
 const LANG_KEY = "portfolio:lang";
 const THEME_KEY = "portfolio:theme";
 
-/* Doit rester d'accord avec --bg dans theme.css : c'est la couleur que
-   les navigateurs mobiles peignent derrière la barre d'adresse. */
+/* Doit suivre --bg dans theme.css. */
 const BROWSER_UI = { light: "#fbf7ff", dark: "#120e20" };
 
 export default function App() {
@@ -22,11 +21,8 @@ export default function App() {
       const saved = window.localStorage.getItem(LANG_KEY);
       if (saved === "fr" || saved === "en") return saved;
     } catch {
-      /* navigation privée, stockage bloqué : on retombe sur la langue par défaut */
+      /* stockage bloqué */
     }
-    /* Le site s'ouvre en anglais, quelle que soit la langue du navigateur : les
-       recruteurs et les équipes data ne sont pas tous francophones. Le français
-       reste à un clic, et le choix est retenu d'une visite à l'autre. */
     return "en";
   });
 
@@ -37,21 +33,18 @@ export default function App() {
     try {
       window.localStorage.setItem(LANG_KEY, language);
     } catch {
-      /* rien à faire : la préférence ne sera juste pas retenue */
+      /* stockage bloqué */
     }
   }, [language]);
 
   const toggleLanguage = () => setLanguage((l) => (l === "fr" ? "en" : "fr"));
 
-  /* Le site s'ouvre de nuit. Le mode clair reste à un clic, et le choix
-     est retenu d'une visite à l'autre.
-     La valeur est déjà posée sur <html> par le script d'index.html, avant
-     le premier rendu, sinon la page clignoterait en clair au chargement. */
+  /* Le thème est déjà posé sur <html> par index.html, avant le premier rendu. */
   const [theme, setTheme] = useState(() => {
     try {
       if (window.localStorage.getItem(THEME_KEY) === "light") return "light";
     } catch {
-      /* stockage bloqué : on ouvre de nuit, comme tout le monde */
+      /* stockage bloqué */
     }
     return "dark";
   });
@@ -70,7 +63,6 @@ export default function App() {
 
   const toggleTheme = () => setTheme((v) => (v === "dark" ? "light" : "dark"));
 
-  // L'ordre des écrans : qui je suis, d'où je viens, ce que je fais, comment me joindre.
   const frames = [
     { id: "top", label: t.navHome },
     { id: "about", label: t.navAbout },

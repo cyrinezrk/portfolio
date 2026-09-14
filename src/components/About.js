@@ -3,7 +3,6 @@ import { education, experience, skillGroups, personal } from "../data/content";
 import useInView from "../hooks/useInView";
 import "./About.css";
 
-/* Une entrée de parcours. Toujours un lien : rien n'est mort sur la page. */
 function Entry({ logo, href, title, period, detail, sub }) {
   return (
     <li className="entry">
@@ -85,7 +84,6 @@ export default function About({ t, language }) {
                 <div key={group.id} className="skill-group">
                   <h4>{group[language].title}</h4>
                   <ul>
-                    {/* Chaque compétence mène à sa source officielle. */}
                     {group.items.map((item) => (
                       <li key={item.name}>
                         <a href={item.href} target="_blank" rel="noopener noreferrer">

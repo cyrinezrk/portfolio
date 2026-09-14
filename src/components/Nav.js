@@ -20,7 +20,6 @@ export default function Nav({ t, language, onToggleLanguage, theme, onToggleThem
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // La section la plus haute encore visible devient la section active.
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -72,9 +71,6 @@ export default function Nav({ t, language, onToggleLanguage, theme, onToggleThem
         </nav>
 
         <div className="nav-actions">
-          {/* Une lune, toujours la même : elle s'allume quand la nuit est
-              en cours, plutôt que de se transformer en soleil. Ce que fait
-              le bouton est dit par son libellé, pas par son dessin. */}
           <button
             type="button"
             className="nav-theme"
@@ -122,9 +118,7 @@ export default function Nav({ t, language, onToggleLanguage, theme, onToggleThem
         </div>
       </div>
 
-      {/* Rendu seulement quand il est ouvert. `hidden` ne suffisait pas : il
-          ne pose `display: none` que par la feuille du navigateur, qu'une
-          simple règle d'auteur annule. */}
+      {/* `hidden` ne suffit pas : toute règle qui redéclare display l'annule. */}
       {open && (
         <div className="nav-sheet">
           {SECTIONS.map(({ id, key }) => (

@@ -1,12 +1,8 @@
 import React from "react";
 import "./ProjectCover.css";
 
-/*
- * Les projets data n'ont pas de capture d'écran : un notebook ne se montre pas.
- * On dessine à la place un motif qui dit ce que le projet fait.
- */
+/* Motif dessiné pour les projets sans capture d'écran. */
 
-/* JOJA : des barres, comme celles de l'analyse. */
 function Bars() {
   const values = [46, 72, 58, 88, 64, 40, 76];
   return (
@@ -18,7 +14,6 @@ function Bars() {
   );
 }
 
-/* Alice : une page de texte dont quelques mots ressortent, comme une entité repérée. */
 function Book() {
   const lines = [96, 88, 72, 92, 64, 84, 78, 56];
   const marked = new Set([1, 4, 6]);
@@ -35,8 +30,6 @@ function Book() {
   );
 }
 
-/* Jobzz : trois fiches empilées, le texte caviardé, un voile qui passe.
-   Rien à lire — c'est le sujet. */
 function Veil() {
   const cards = [0, 1, 2];
   const lines = [88, 62, 74, 46];
@@ -56,8 +49,7 @@ function Veil() {
 
 export default function ProjectCover({ project, alt = "" }) {
   if (project.image) {
-    // Un graphique ou une gravure se montrent entiers : les rogner les rendrait
-    // illisibles. Les captures de sites, elles, supportent le recadrage.
+    // Les planches se montrent entières, les captures supportent le recadrage.
     return (
       <img
         src={project.image}

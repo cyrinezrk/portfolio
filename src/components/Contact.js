@@ -50,17 +50,7 @@ export default function Contact({ t, language }) {
               </h2>
               <p className="section-lead">{t.contactLead}</p>
 
-              {/* Un mot épinglé plutôt qu'un voyant de disponibilité : la
-                  phrase ne change pas, c'est le ton qui change. */}
-              <p className="availability">
-                <span className="availability-tag">
-                  {t.availabilityTag}
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 0c.6 6.4 5 10.8 12 12-7 1.2-11.4 5.6-12 12-.6-6.4-5-10.8-12-12 7-1.2 11.4-5.6 12-12Z" />
-                  </svg>
-                </span>
-                {t.availability}
-              </p>
+              <p className="availability">{t.availability}</p>
 
               <ul className="contact-links">
                 <li>

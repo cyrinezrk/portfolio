@@ -123,8 +123,6 @@
   gap: 7px;
 }
 
-/* La pastille porte l'apparence, le lien porte la mise en page : toute la
-   surface de la pastille est cliquable et mène au site officiel. */
 .skill-group li {
   display: inline-flex;
   border-radius: var(--r-pill);
@@ -167,8 +165,6 @@
 
 /* --- Hors écran ------------------------------------------------------- */
 
-/* Le filet et le titre appartiennent au bloc, pas à la liste : sinon le
-   titre passerait au-dessus du trait de séparation. */
 .about-personal {
   padding-top: clamp(14px, 2vh, 24px);
   border-top: 1px solid var(--line);
@@ -183,8 +179,6 @@
   gap: 18px;
 }
 
-/* La phrase se cale sur le milieu de l'icône. Alignée en haut, elle
-   partait plus haut que le dessin et la ligne paraissait bancale. */
 .personal li {
   display: flex;
   gap: 13px;
@@ -210,8 +204,7 @@
   line-height: 1.5;
 }
 
-/* Au doigt, une pastille de compétence est une cible à viser : on lui donne
-   un peu de hauteur, sans toucher au dessin sur écran avec souris. */
+/* Cible tactile plus haute. */
 @media (pointer: coarse) {
   .skill-group li a { padding-block: 9px; }
 }
@@ -235,8 +228,7 @@
   .entry-logo { width: 38px; height: 38px; }
   .entry-head strong { font-size: 15.5px; }
 
-  /* Une ligne de parcours ne se déplace plus au survol : sur un écran tactile
-     le survol n'existe pas, et le décalage restait collé après un appui. */
+  /* Pas de survol au doigt : le décalage restait collé après un appui. */
   .entry a:hover { transform: none; }
 
   .skills { gap: 20px; }

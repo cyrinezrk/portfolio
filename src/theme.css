@@ -1,10 +1,7 @@
-/* ------------------------------------------------------------------ *
-   Design system — "pastel magique"
-   Un lilas très clair comme fond, du rose pour l'accent, beaucoup d'air.
- * ------------------------------------------------------------------ */
+/* Design system : lilas clair en fond, rose en accent. */
 
-/* Les polices sont déclarées dans public/index.html : un @import ici
-   retarde leur téléchargement du temps de lire cette feuille. */
+/* Polices déclarées dans public/index.html : un @import ici retarderait
+   leur téléchargement. */
 
 :root {
   /* Fonds */
@@ -40,7 +37,7 @@
   --line: #e9dcff;
   --line-strong: #d9c6fb;
 
-  /* Ombres — toujours teintées violet, jamais du gris */
+  /* Ombres, toujours teintées violet */
   --shadow-sm: 0 2px 8px rgba(122, 78, 190, 0.06);
   --shadow-md: 0 10px 30px rgba(122, 78, 190, 0.1);
   --shadow-lg: 0 24px 60px rgba(122, 78, 190, 0.16);
@@ -58,7 +55,7 @@
   --font-sans: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "Space Grotesk", ui-monospace, monospace;
 
-  /* Rythme — pleine largeur : on borne très haut, presque jamais atteint */
+  /* Rythme */
   --page: 1720px;
   --gutter: clamp(20px, 4.5vw, 80px);
   --section-y: clamp(80px, 12vw, 150px);
@@ -66,11 +63,7 @@
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* --- Jetons sémantiques ------------------------------------------- *
-     Ces valeurs vivaient en dur dans les composants. Sorties ici, elles
-     donnent au mode nuit une prise sur tout ce qui n'est pas une couleur
-     de la palette : voiles, ombres, aplats, décor.
-   * ------------------------------------------------------------------ */
+  /* --- Jetons sémantiques ------------------------------------------- */
   --on-accent: #ffffff;                        /* texte posé sur un aplat d'accent */
   --on-accent-dim: rgba(255, 255, 255, 0.75);
   --on-accent-veil: rgba(255, 255, 255, 0.28);
@@ -102,18 +95,10 @@
   color-scheme: light;
 }
 
-/* ------------------------------------------------------------------ *
-   Mode nuit — « pastel magique » de nuit.
-   Même site, même lilas, mais posé sur du violet profond. On ne touche
-   qu'aux jetons : aucun composant ne connaît le thème.
-
-   Deux principes tenus partout :
-   - ce qui portait du texte clair sur un aplat coloré garde son aplat
-     (--lilac-400, --pink-300) ; ce qui servait de texte s'éclaircit
-     (--lilac-500, --lilac-600) ;
-   - ce qui servait de fond très clair devient un violet sombre
-     (--lilac-50 à --lilac-200), sinon les puces et les cartes
-     trouent la page.
+/* --- Mode nuit ------------------------------------------------------ *
+   Seuls les jetons changent : aucun composant ne connaît le thème.
+   Les aplats d'accent sont conservés, les couleurs de texte s'éclaircissent,
+   les fonds très clairs deviennent du violet sombre.
  * ------------------------------------------------------------------ */
 :root[data-theme="dark"] {
   --bg: #120e20;
@@ -145,7 +130,6 @@
   --line: #2d2452;
   --line-strong: #40336c;
 
-  /* Sur fond sombre, une ombre teintée ne se voit pas : il faut du noir. */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.45);
   --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.55);
@@ -159,13 +143,11 @@
   --nav-glass-strong: rgba(18, 14, 32, 0.96);
   --nav-shadow: rgba(0, 0, 0, 0.5);
 
-  /* La planche reste claire : les graphiques et la gravure sont exportés
-     sur fond blanc, les poser sur du violet foncé les rendrait sales. */
+  /* La planche reste claire : les visuels sont exportés sur fond blanc. */
   --plate: #f3eeff;
   --band: rgba(44, 32, 80, 0.45);
   --track: rgba(155, 122, 232, 0.18);
   --star-glow: rgba(247, 140, 200, 0.5);
-  /* Le grain est un bruit noir : à pleine force il ternit le violet. */
   --grain-opacity: 0.18;
 
   --ok: #4bb98c;
@@ -233,12 +215,10 @@ button {
   border: none;
   background: none;
   cursor: pointer;
-  /* Le texte d'un bouton reste copiable : rien n'est verrouillé sur ce site. */
-  -webkit-user-select: text;
+    -webkit-user-select: text;
   user-select: text;
 }
 
-/* Aucun bloc décoratif ne doit avaler la sélection du texte qu'il contient. */
 h1, h2, h3, h4, p, li, span, strong, em, blockquote, figcaption, label, td, th {
   -webkit-user-select: text;
   user-select: text;
@@ -262,9 +242,8 @@ h1, h2, h3, h4, p, li, span, strong, em, blockquote, figcaption, label, td, th {
 }
 
 /* --- Un écran = une partie ------------------------------------------ *
-   Chaque section occupe la hauteur du viewport et s'y accroche. En dessous
-   d'une certaine hauteur, ou sur mobile, on relâche : mieux vaut un
-   défilement normal qu'un contenu coupé.
+   Chaque section fait la hauteur du viewport et s'y accroche. Sous une
+   certaine hauteur, ou sur mobile, on relâche l'accrochage.
  * ------------------------------------------------------------------ */
 
 .frame {
@@ -274,8 +253,7 @@ h1, h2, h3, h4, p, li, span, strong, em, blockquote, figcaption, label, td, th {
   scroll-snap-stop: always;
   display: flex;
   flex-direction: column;
-  /* `safe` : si le contenu dépasse, il s'aligne en haut plutôt que d'être
-     rogné des deux côtés par le centrage. */
+  /* `safe` : un contenu trop grand s'aligne en haut au lieu d'être rogné. */
   justify-content: safe center;
   padding-block: calc(var(--nav-h) + 26px) 74px;
   overflow: clip;
@@ -288,14 +266,9 @@ h1, h2, h3, h4, p, li, span, strong, em, blockquote, figcaption, label, td, th {
   padding-inline: var(--gutter);
 }
 
-/* Les repères latéraux sont fixés contre le bord droit du viewport. Tant
-   qu'ils sont affichés, le contenu leur laisse la place, sinon l'étoile active
-   et son libellé se posent sur le texte de la partie qu'on est en train de
-   lire. Trois paliers :
-   - jusqu'à 1200 px, l'étoile est seule (48 px), le libellé serait de trop ;
-   - au-delà, l'étoile et son libellé demandent environ 112 px ;
-   - à partir de 1830 px, plus rien à réserver : la page bute sur `--page` et
-     ses marges naturelles dépassent déjà la largeur des repères. */
+/* Place réservée aux repères latéraux, fixés à droite :
+   < 1200 px l'étoile seule (48 px), au-delà étoile + libellé (112 px),
+   > 1830 px rien, les marges naturelles suffisent. */
 @media (min-width: 901px) and (max-width: 1830px) and (min-height: 661px) {
   .frame-inner { padding-right: max(var(--gutter), 64px); }
 }
@@ -304,19 +277,11 @@ h1, h2, h3, h4, p, li, span, strong, em, blockquote, figcaption, label, td, th {
   .frame-inner { padding-right: max(var(--gutter), 136px); }
 }
 
-/* --- L'écran du téléphone est un écran comme un autre ---------------- *
-   Une partie occupe toujours la hauteur du viewport : sur téléphone, c'est
-   simplement un écran portrait au lieu d'un écran paysage. Deux choses
-   changent seulement.
-
-   D'abord la barre de navigation. Elle est fixe, donc elle recouvre le haut
-   de chaque partie : la hauteur réellement visible n'est pas `100svh` mais
-   `100svh` moins sa hauteur. On la déduit en réservant sa hauteur en haut de
-   chaque partie, et le contenu se centre dans ce qui reste, jamais dessous.
-
-   Ensuite l'accrochage, qui passe de `mandatory` à `proximity` : les parties
-   longues, parcours et projets, dépassent forcément un écran de téléphone, et
-   un accrochage impératif se battrait avec le doigt au milieu de leur lecture.
+/* --- Téléphone ------------------------------------------------------ *
+   La barre fixe recouvre le haut de chaque partie : on réserve sa hauteur
+   pour que le contenu se centre dans ce qui reste.
+   L'accrochage passe en `proximity` : les parties longues dépassent un écran
+   de téléphone, un accrochage impératif se battrait avec le doigt.
  * ------------------------------------------------------------------ */
 
 @media (max-width: 900px) {
@@ -329,8 +294,7 @@ h1, h2, h3, h4, p, li, span, strong, em, blockquote, figcaption, label, td, th {
   }
 }
 
-/* Un téléphone couché ne fait plus que 390 px de haut : aucune partie n'y
-   tient, on relâche complètement et la page se déroule. */
+/* Téléphone couché : aucune partie ne tient, on relâche l'accrochage. */
 @media (max-height: 660px) {
   html { scroll-snap-type: none; }
 
@@ -347,7 +311,7 @@ h1, h2, h3, h4, p, li, span, strong, em, blockquote, figcaption, label, td, th {
   position: relative;
 }
 
-/* Un mot mis en avant, en serif italique */
+/* Mot mis en avant, en serif italique */
 .magic {
   font-family: var(--font-display);
   font-style: italic;
@@ -431,7 +395,6 @@ h1, h2, h3, h4, p, li, span, strong, em, blockquote, figcaption, label, td, th {
     background 0.35s var(--ease), color 0.35s var(--ease);
 }
 
-/* Un reflet qui balaie le bouton de gauche à droite au survol. */
 .btn::after {
   content: "";
   position: absolute;
@@ -475,7 +438,7 @@ h1, h2, h3, h4, p, li, span, strong, em, blockquote, figcaption, label, td, th {
   background: var(--lilac-50);
 }
 
-/* --- Décor : aurores + poussière d'étoiles ------------------------- */
+/* --- Décor -------------------------------------------------------- */
 
 .aurora {
   position: fixed;
@@ -525,7 +488,7 @@ h1, h2, h3, h4, p, li, span, strong, em, blockquote, figcaption, label, td, th {
   50% { transform: translate(5vw, -6vh) scale(1.15); }
 }
 
-/* Grain très léger pour casser le dégradé plat */
+/* Grain léger, pour casser le dégradé */
 .grain {
   position: fixed;
   inset: 0;
@@ -559,11 +522,7 @@ h1, h2, h3, h4, p, li, span, strong, em, blockquote, figcaption, label, td, th {
   .reveal { opacity: 1; transform: none; }
 }
 
-/* --- Téléphone ------------------------------------------------------ *
-   Rythme resserré, titres ramenés à la largeur disponible, coins moins
-   arrondis parce qu'une carte de 335 px de large avec 36 px de rayon n'a
-   presque plus d'angle droit. La palette et les fontes ne bougent pas.
- * ------------------------------------------------------------------ */
+/* --- Téléphone ------------------------------------------------------ */
 
 @media (max-width: 760px) {
   :root {

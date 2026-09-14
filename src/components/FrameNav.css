@@ -14,11 +14,8 @@
   gap: 14px;
 }
 
-/* L'étoile est le premier élément et ne bouge jamais : le libellé, lui, est
-   sorti du flux. Sans ça, un libellé plus long décalait son étoile. */
-/* L'étoile occupe seule la largeur du lien, le libellé est hors du flux :
-   c'est ce qui garde les quatre étoiles sur le même axe, quelle que soit la
-   longueur du mot qui les accompagne. */
+/* Le libellé est hors du flux : les étoiles restent alignées quelle que
+   soit sa longueur. */
 .frame-nav a {
   position: relative;
   display: flex;
@@ -29,8 +26,6 @@
   width: 24px;
 }
 
-/* Une étoile par écran. La taille de la boîte ne change jamais, sinon les
-   repères ne seraient plus alignés : seul le contenu grandit. */
 .fn-star {
   width: 18px;
   height: 18px;
@@ -83,8 +78,6 @@
 
 .frame-nav a.is-active .fn-label { color: var(--lilac-600); }
 
-/* Sous 1200 px, l'étoile se suffit : garder le libellé obligerait le contenu
-   à reculer de 136 px, ce qui est cher payé sur un écran déjà étroit. */
 @media (max-width: 1200px) {
   .fn-label { display: none; }
 }

@@ -6,22 +6,13 @@ import Counter from "./Counter";
 import useInView from "../hooks/useInView";
 import "./Projects.css";
 
-/*
- * Un sommaire à gauche, la fiche à droite. Pas de fenêtre qui s'ouvre :
- * on reste sur le même écran, seul le panneau de droite change.
- */
 export default function Projects({ t, language }) {
   const [filter, setFilter] = useState("all");
   const [ref, inView] = useInView(0.3);
   const listRef = useRef(null);
 
-  // Un projet qu'on ne peut pas aller voir n'a rien à faire ici : il faut un
-  // site en ligne ou un dépôt. Ajouter `link` ou `repo` le fait réapparaître.
-  // Seule exception, `comingSoon` : un projet encore en chantier n'a rien à
-  // montrer, mais dire qu'il existe fait partie du propos.
-  // Les projets data ouvrent la liste — c'est le message de la page — et JOJA
-  // passe devant : c'est lui qui s'affiche quand on arrive sur cet écran.
-  // Ce qui est en chantier ferme la marche, quel que soit son domaine.
+  // Il faut `link`, `repo` ou `comingSoon` pour apparaître.
+  // Ordre : JOJA, les autres projets data, le reste, les chantiers en dernier.
   const ordered = useMemo(() => {
     const shown = projects.filter((p) => p.link || p.repo || p.comingSoon);
     const done = shown.filter((p) => !p.comingSoon);
@@ -42,7 +33,6 @@ export default function Projects({ t, language }) {
 
   const [activeId, setActiveId] = useState(ordered[0].id);
 
-  // Si le filtre courant exclut le projet affiché, on montre le premier de la liste.
   useEffect(() => {
     if (!visible.some((p) => p.id === activeId)) {
       setActiveId(visible[0]?.id);
@@ -51,7 +41,7 @@ export default function Projects({ t, language }) {
 
   const active = visible.find((p) => p.id === activeId) || visible[0];
 
-  // Flèches haut / bas : on parcourt le sommaire sans quitter le clavier.
+  // Flèches haut / bas dans le sommaire.
   const onListKey = (event) => {
     const step = event.key === "ArrowDown" ? 1 : event.key === "ArrowUp" ? -1 : 0;
     if (!step) return;
@@ -102,8 +92,6 @@ export default function Projects({ t, language }) {
         </header>
 
         <div className="projects-body">
-          {/* Le sommaire ne change de fiche qu'au clic : au survol, la souris qui
-              traverse la liste en arrivant sur l'écran chassait JOJA. */}
           <ol className="p-index" ref={listRef} onKeyDown={onListKey}>
             {visible.map((p, i) => (
               <li key={p.id}>
@@ -124,7 +112,6 @@ export default function Projects({ t, language }) {
             ))}
           </ol>
 
-          {/* La clé force le rejeu des animations quand on change de projet. */}
           <article
             className={`p-sheet card ${active.fit === "contain" ? "has-figure" : ""}`}
             key={active.id}
@@ -181,8 +168,6 @@ export default function Projects({ t, language }) {
               )}
 
               <div className="p-sheet-foot">
-                {/* Une pile annoncée est une promesse : un projet en chantier
-                    n'en fait pas, donc `stack` peut manquer. */}
                 <ul className="stack">
                   {(active.stack || []).map((s) => (
                     <li key={s} className="chip">{s}</li>

@@ -1,7 +1,6 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import "./Hero.css";
 
-/* Poussière lumineuse : de petites étoiles qui s'allument et s'éteignent. */
 function Sparkles({ count = 18 }) {
   const stars = useMemo(
     () =>
@@ -38,11 +37,7 @@ function Sparkles({ count = 18 }) {
   );
 }
 
-/*
- * Une forme organique qui se déforme lentement. Rien de géométrique : les
- * trois tracés ne sont que le même contour respiré différemment, et SMIL
- * interpole de l'un à l'autre en boucle.
- */
+/* Trois variantes du même contour, interpolées en boucle par SMIL. */
 const BLOB_A =
   "M436 92c58 40 78 128 62 200-16 72-68 128-134 158-66 30-146 34-202-2C106 412 72 336 68 262 64 188 90 116 142 74c52-42 130-38 190-24 36 9 68 22 104 42Z";
 const BLOB_B =
@@ -75,7 +70,6 @@ function Blob({ className, dur, delay = "0s" }) {
   );
 }
 
-/* Bulles pastel qui montent doucement derrière le titre. */
 function Orbs({ count = 9 }) {
   const orbs = useMemo(
     () =>
@@ -109,17 +103,7 @@ function Orbs({ count = 9 }) {
   );
 }
 
-/*
- * Une lueur qui suit la souris, avec du retard.
- *
- * Elle ne colle pas au curseur : à chaque image, elle avance d'une fraction
- * de la distance qui l'en sépare, ce qui lui donne son inertie. Deux couches
- * à deux vitesses, pour que la traîne se voie.
- *
- * Rien n'est écrit dans l'état React : une position de souris change soixante
- * fois par seconde et redessinerait le hero à chaque fois. On écrit
- * directement dans le style du nœud, hors du cycle de rendu.
- */
+/* La position s'écrit dans le style du nœud, hors du rendu React. */
 function MouseHalo() {
   const host = useRef(null);
 
@@ -127,8 +111,6 @@ function MouseHalo() {
     const box = host.current;
     if (!box) return undefined;
 
-    // Pas de souris à suivre sur un écran tactile, et pas de mouvement
-    // pour qui a demandé qu'on lui en épargne.
     const fine = window.matchMedia("(pointer: fine)");
     const still = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (!fine.matches || still.matches) return undefined;
@@ -149,8 +131,6 @@ function MouseHalo() {
       targetX = event.clientX - r.left;
       targetY = event.clientY - r.top;
       if (!placed) {
-        // Première apparition : on se pose sous le curseur au lieu de
-        // traverser tout l'écran depuis le coin.
         layers.forEach((l) => { l.x = targetX; l.y = targetY; });
         placed = true;
       }
@@ -189,34 +169,6 @@ function MouseHalo() {
   );
 }
 
-/* Le mot de fin de phrase change tout seul, avec un fondu vertical. */
-function RotatingWord({ words }) {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced || words.length < 2) return undefined;
-
-    const timer = setInterval(() => {
-      setIndex((i) => (i + 1) % words.length);
-    }, 2600);
-
-    return () => clearInterval(timer);
-  }, [words]);
-
-  return (
-    <span className="rotator">
-      {/* Le mot le plus long fixe la largeur : la phrase ne saute jamais. */}
-      <span className="rotator-ghost" aria-hidden="true">
-        {words.reduce((a, b) => (b.length > a.length ? b : a), "")}
-      </span>
-      <span key={index} className="rotator-word magic">
-        {words[index]}
-      </span>
-    </span>
-  );
-}
-
 export default function Hero({ t }) {
   const goTo = (id) => (event) => {
     event.preventDefault();
@@ -245,7 +197,7 @@ export default function Hero({ t }) {
         </h1>
 
         <p className="hero-phrase">
-          {t.heroBefore} <RotatingWord words={t.heroRotating} />
+          {t.heroPhrase.before} <span className="magic">{t.heroPhrase.word}</span>{t.heroPhrase.after}
         </p>
 
         <p className="hero-lead">{t.heroLead}</p>

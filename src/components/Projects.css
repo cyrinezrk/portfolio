@@ -81,11 +81,8 @@
 .p-item {
   position: relative;
   display: grid;
-  /* Le numéro, le nom, puis ce que la ligne porte : une étoile, une mention
-     « bientôt », le domaine. Le nombre de pastilles varie d'un projet à
-     l'autre, donc les colonnes de fin se créent à la demande plutôt que
-     d'être comptées à l'avance. `minmax(0, 1fr)` laisse le nom se couper
-     au lieu de pousser le reste hors de la ligne. */
+  /* Colonnes de fin créées à la demande : leur nombre varie d'un projet à
+     l'autre. `minmax(0, 1fr)` laisse le nom se couper. */
   grid-auto-flow: column;
   grid-template-columns: auto minmax(0, 1fr);
   grid-auto-columns: auto;
@@ -100,7 +97,6 @@
     transform 0.35s var(--ease);
 }
 
-/* Le liseré qui marque le projet lu. */
 .p-item::before {
   content: "";
   position: absolute;
@@ -144,8 +140,6 @@
 
 .p-flag { font-size: 11px; color: var(--pink-300); }
 
-/* Un projet en chantier se signale dans le sommaire, en petit : il compte
-   dans la liste sans se faire passer pour un projet livré. */
 .p-soon {
   font-family: var(--font-mono);
   font-size: 9px;
@@ -161,7 +155,6 @@
 
 .p-item.is-on .p-soon { border-style: solid; }
 
-/* Sur la fiche, à la place des liens : il n'y a rien à ouvrir. */
 .btn-soon {
   background: transparent;
   border: 1px dashed var(--line-strong);
@@ -207,9 +200,8 @@
   min-height: 220px;
 }
 
-/* Ce qui reste recadré est une photo ou une bannière, jamais une capture de
-   page : le sujet occupe le milieu de l'image, donc on garde le milieu. Les
-   captures de site, elles, passent par `is-contain` et se montrent entières. */
+/* Photos et bannières : le sujet est au milieu. Les captures passent par
+   `is-contain`. */
 .p-sheet-visual img,
 .p-sheet-visual .cover {
   width: 100%;
@@ -218,8 +210,6 @@
   object-position: center;
 }
 
-/* Un graphique ou une gravure se montrent entiers, présentés comme une
-   planche posée sur le fond pastel. Les rogner les rendrait illisibles. */
 .p-sheet-visual img.is-contain {
   object-fit: contain;
   padding: clamp(14px, 1.6vw, 22px);
@@ -238,11 +228,8 @@
   background: linear-gradient(150deg, var(--lilac-100), var(--pink-100) 60%, var(--butter));
 }
 
-/* Une planche large a besoin de place : on lui donne un peu de la colonne. */
 .p-sheet.has-figure { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
 
-/* La zone qui défile est décollée des bords de la fiche : sa barre reste à
-   l'intérieur de la carte au lieu de buter contre l'angle arrondi. */
 .p-sheet-body {
   margin: clamp(10px, 1.1vw, 15px);
   margin-left: 0;
@@ -257,7 +244,6 @@
   overscroll-behavior: contain;
 }
 
-/* La barre de défilement reste à l'intérieur de la fiche, discrète. */
 .p-sheet-body::-webkit-scrollbar { width: 8px; }
 .p-sheet-body::-webkit-scrollbar-track { background: transparent; }
 .p-sheet-body::-webkit-scrollbar-thumb {
@@ -455,14 +441,11 @@
 
 @media (max-width: 1000px) {
   .projects-body { grid-template-columns: 1fr; }
-  /* `.has-figure` doit être répété : une requête média n'ajoute aucune
-     spécificité, et `.p-sheet.has-figure` l'emporterait sur `.p-sheet`. */
+  /* `.has-figure` répété : une requête média n'ajoute aucune spécificité. */
   .p-sheet,
   .p-sheet.has-figure { grid-template-columns: 1fr; }
   .p-sheet-visual { min-height: 180px; aspect-ratio: 16 / 9; }
   .p-sheet-body { max-height: none; overflow: visible; margin: 0; }
-  /* Le sommaire devient une bande qui défile latéralement : chaque ligne garde
-     sa largeur naturelle au lieu d'être comprimée par ses voisines. */
   .p-index {
     flex-direction: row;
     overflow-x: auto;
@@ -475,18 +458,13 @@
   .p-item.is-on { transform: none; }
 }
 
-/* --- Téléphone ------------------------------------------------------- *
-   Le sommaire devient une rangée de pastilles qui file d'un bord à l'autre
-   de l'écran, comme les filtres juste au-dessus. La fiche, elle, se lit d'une
-   traite : image, texte, puis les deux boutons en pleine largeur.
- * ------------------------------------------------------------------- */
+/* --- Téléphone ------------------------------------------------------- */
 
 @media (max-width: 760px) {
   .projects-inner { gap: 20px; }
   .projects-head { gap: 16px; }
   .filter { padding: 8px 14px; font-size: 13.5px; }
 
-  /* La bande de pastilles touche les deux bords : on voit qu'elle continue. */
   .p-index {
     margin-inline: calc(var(--gutter) * -1);
     padding-inline: var(--gutter);
@@ -502,8 +480,6 @@
     box-shadow: var(--shadow-sm);
   }
 
-  /* Le liseré vertical ne veut plus rien dire sur une pastille couchée : le
-     projet ouvert se marque par le même dégradé que le filtre actif. */
   .p-item::before { display: none; }
 
   .p-item.is-on {

@@ -1,10 +1,8 @@
-// Toutes les données éditoriales du site, en un seul endroit.
-// Pour ajouter un projet : une entrée ici, rien d'autre à toucher.
+// Contenu éditorial du site, FR et EN.
 
 const P = process.env.PUBLIC_URL;
 
-// Le CV : un seul endroit pour le fichier et le nom du téléchargement,
-// sinon les deux boutons (Nav et Contact) finissent par diverger.
+// Utilisé par Nav et Contact.
 export const cv = {
   href: `${P}/CV-Cyrine-Zarkouna.pdf`,
   filename: "Cyrine_Zarkouna_CV.pdf",
@@ -26,14 +24,14 @@ export const projects = [
     fit: "contain",
     repo: "https://github.com/cyrinezark/joja",
     stack: ["Python", "pandas", "Jupyter", "Docker", "pytest", "Sphinx"],
-    // Chiffres réels tirés de l'analyse, voir notebooks/joja_eda.ipynb
+    // voir notebooks/joja_eda.ipynb
     stats: [
       { value: 3.2, suffix: "M", fr: "commandes analysées", en: "orders analysed" },
       { value: 200, suffix: "k", fr: "clients", en: "customers" },
       { value: 5, suffix: "", fr: "fichiers, schéma en étoile", en: "files, star schema" },
     ],
     chart: {
-      // Pénétration par département : part des commandes contenant le rayon
+      // part des commandes contenant le rayon
       type: "bars",
       unit: "%",
       fr: "Présence dans les commandes, par département",
@@ -87,7 +85,7 @@ export const projects = [
     fit: "contain",
     repo: "https://github.com/cyrinezark/alice-in-wonderland",
     stack: ["Python", "spaCy", "gensim", "sumy", "NLTK", "uv"],
-    // Chiffres vérifiables dans le code : src/services/ et src/bookworm.py
+    // voir src/services/ et src/bookworm.py
     stats: [
       { value: 4, suffix: "", fr: "analyses par fiche", en: "analyses per card" },
       { value: 5, suffix: "", fr: "métriques de vocabulaire", en: "vocabulary metrics" },
@@ -414,9 +412,7 @@ export const projects = [
     },
   },
   {
-    // Le seul projet sans lien ni dépôt : il n'y a rien à aller voir encore.
-    // `comingSoon` est ce qui le laisse malgré tout apparaître dans la liste,
-    // et ce qui le pousse en dernier.
+    // Sans lien ni dépôt : `comingSoon` le garde dans la liste, en dernier.
     id: "jobzz",
     comingSoon: true,
     track: "data",
@@ -509,19 +505,15 @@ export const experience = [
   },
 ];
 
-// Langages, environnements et outils seulement : les bibliothèques d'un projet
-// se lisent dans le `stack` de ce projet, pas ici.
-// Chaque compétence pointe vers son site officiel, ou, à défaut de site, vers
-// la page la plus officielle qui existe (la norme ISO pour SQL, ECMA pour
-// JavaScript, le W3C pour HTML et CSS, kernel.org pour Linux).
+// Langages, environnements et outils. Les bibliothèques sont dans le `stack`
+// de chaque projet. `href` : site officiel, ou la page de référence à défaut.
 export const skillGroups = [
   {
     id: "data",
     fr: { title: "Data & analyse" },
     en: { title: "Data & analysis" },
     items: [
-      { name: "Python", img: `${P}/pythoned.webp`, href: "https://www.python.org/" },
-      { name: "Jupyter", img: null, href: "https://jupyter.org/" },
+      { name: "Jupyter Notebook", img: null, href: "https://jupyter.org/" },
       { name: "SQL", img: `${P}/MySQL.svg`, href: "https://www.iso.org/standard/76583.html" },
       { name: "MariaDB", img: `${P}/maria.webp`, href: "https://mariadb.org/" },
     ],
@@ -531,6 +523,7 @@ export const skillGroups = [
     fr: { title: "Développement" },
     en: { title: "Development" },
     items: [
+      { name: "Python", img: `${P}/pythoned.webp`, href: "https://www.python.org/" },
       { name: "React", img: `${P}/logo192.png`, href: "https://react.dev/" },
       {
         name: "JavaScript",
@@ -540,7 +533,6 @@ export const skillGroups = [
       { name: "HTML / CSS", img: `${P}/html.webp`, href: "https://www.w3.org/standards/" },
       { name: "Java", img: `${P}/java.webp`, href: "https://dev.java/" },
       { name: "Docker", img: null, href: "https://www.docker.com/" },
-      { name: "Linux", img: `${P}/LINUX.webp`, href: "https://www.kernel.org/" },
     ],
   },
   {
@@ -553,7 +545,6 @@ export const skillGroups = [
       { name: "Shopify", img: `${P}/shopify.webp`, href: "https://www.shopify.com/" },
       { name: "Trello", img: `${P}/trello.webp`, href: "https://trello.com/" },
       { name: "Workspace", img: `${P}/google.webp`, href: "https://workspace.google.com/" },
-      { name: "phpMyAdmin", img: `${P}/Phpmyadmin.webp`, href: "https://www.phpmyadmin.net/" },
     ],
   },
 ];
@@ -569,11 +560,9 @@ export const ui = {
   fr: {
     role: "Étudiante en informatique · direction data",
     heroLead:
-      "Je viens du développement web, je vais vers la data. Ce qui m'intéresse n'est pas le graphique, c'est la décision qu'il permet de prendre.",
-    availabilityTag: "Avis de recherche",
+      "J'ai passé trois ans en alternance chez Majoli et We Are Jolies, entre développement web et suivi de KPI, et je suis aujourd'hui à Epitech pour me former à l'analyse de données.",
     availability: "Je cherche une alternance en contrat d'apprentissage, pour terminer mes études jusqu'en 2028.",
-    heroBefore: "Ce que je cherche, c'est",
-    heroRotating: ["l'histoire", "le motif", "la décision", "la surprise"],
+    heroPhrase: { before: "Développeuse web, je me spécialise en", word: "data", after: "." },
     heroCtaWork: "Voir mes projets",
     heroCtaContact: "Me contacter",
     scroll: "Défiler",
@@ -616,11 +605,9 @@ export const ui = {
   en: {
     role: "Computer science student · heading into data",
     heroLead:
-      "I come from web development, I'm heading into data. What interests me isn't the chart, it's the decision it makes possible.",
-    availabilityTag: "Wanted",
+      "I spent three years in apprenticeship at Majoli and We Are Jolies, between web development and KPI tracking, and I am now at Epitech training in data analysis.",
     availability: "I am looking for an apprenticeship contract to finish my degree, through to 2028.",
-    heroBefore: "What I look for is",
-    heroRotating: ["the story", "the pattern", "the decision", "the surprise"],
+    heroPhrase: { before: "Web developer, specialising in", word: "data", after: "." },
     heroCtaWork: "See my work",
     heroCtaContact: "Get in touch",
     scroll: "Scroll",

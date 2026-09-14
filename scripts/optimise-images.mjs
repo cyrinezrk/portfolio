@@ -27,7 +27,6 @@ const LOGOS = new Set([
   "epitech.png", "g4.png", "montpellier.png", "majoli.png", "waj.png",
   "pythoned.png", "MySQL.svg", "maria.png", "html.png", "java.png",
   "Figma.png", "bubble.png", "shopify.png", "trello.png", "google.png",
-  "Phpmyadmin.png", "LINUX.jpg",
 ]);
 
 const files = await readdir(PUBLIC);

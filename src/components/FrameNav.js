@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./FrameNav.css";
 
-/* Pastilles latérales : chaque écran est atteignable en un clic. */
 export default function FrameNav({ frames }) {
   const [active, setActive] = useState(frames[0].id);
 

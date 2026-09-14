@@ -1,10 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-/**
- * Suit l'entrée et la sortie d'un élément dans le viewport.
- * Contrairement à `useReveal`, l'état retombe à `false` quand on repart :
- * chaque écran rejoue son animation quand on y revient.
- */
+/** Entrée / sortie du viewport. L'état retombe à false quand on repart. */
 export default function useInView(threshold = 0.4) {
   const ref = useRef(null);
   const reduced =

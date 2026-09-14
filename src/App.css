@@ -13,10 +13,7 @@
 
 .skip-link:focus { left: 0; }
 
-/* --- Arrivée d'un écran --------------------------------------------- *
-   Quand un écran entre dans le viewport, ses blocs montent l'un après
-   l'autre. Le hero garde ses propres animations d'ouverture.
- * ------------------------------------------------------------------ */
+/* --- Arrivée d'un écran --------------------------------------------- */
 
 .frame:not(.hero) .frame-inner > * {
   opacity: 0;
@@ -34,7 +31,6 @@
 .frame.is-live .frame-inner > *:nth-child(3) { transition-delay: 0.26s; }
 .frame.is-live .frame-inner > *:nth-child(4) { transition-delay: 0.36s; }
 
-/* Chaque écran se distingue du suivant par un voile, sans trait de séparation. */
 .about::before,
 .contact::before {
   content: "";

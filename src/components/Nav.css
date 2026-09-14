@@ -35,7 +35,6 @@
   margin-right: auto;
 }
 
-/* Le logo du site est la favicon, posée à nu : ni cadre, ni fond. */
 .nav-mark {
   width: 30px;
   height: 30px;
@@ -117,13 +116,11 @@
 
 .nav-theme svg { width: 17px; height: 17px; fill: currentColor; }
 
-/* Le croissant se remplit en tournant un peu, comme une lune qui se lève. */
 .nav-theme .moon {
   transform-origin: 50% 50%;
   transition: transform 0.45s var(--ease);
 }
 
-/* Les étoiles n'apparaissent qu'une fois la nuit allumée. */
 .nav-theme .spark {
   opacity: 0;
   transform-origin: 50% 50%;
@@ -203,10 +200,8 @@
 .nav.is-open .nav-burger span:nth-child(2) { opacity: 0; }
 .nav.is-open .nav-burger span:nth-child(3) { transform: translateY(-5.6px) rotate(-45deg); }
 
-/* Ce panneau ne se montre qu'ouvert. Attention au piège : `hidden` ne fait
-   que poser `display: none` via la feuille du navigateur, donc n'importe quelle
-   règle d'auteur qui redéclare `display` l'annule. C'est ce qui laissait les
-   trois liens dépliés en permanence sous la barre, sur tous les téléphones. */
+/* `hidden` ne pose `display: none` que par la feuille du navigateur :
+   toute règle d'auteur qui redéclare `display` l'annule. */
 .nav-sheet {
   display: none;
   flex-direction: column;
@@ -230,8 +225,6 @@
   .nav-burger { display: flex; }
   .nav.is-open .nav-sheet { display: flex; }
 
-  /* La barre reste fixe, et garde son voile en permanence : sans lui, le titre
-     de la partie qu'on lit lui passerait au travers. */
   .nav {
     background: var(--nav-glass-soft);
     backdrop-filter: blur(14px) saturate(1.4);
@@ -239,8 +232,7 @@
     border-bottom-color: var(--line);
   }
 
-  /* Le prénom suffit : le nom entier pousserait les trois commandes de droite
-     hors de l'écran sur un petit téléphone. */
+  /* Le nom entier pousserait les commandes hors de l'écran. */
   .nav-name { display: inline; font-size: 15px; }
   .nav-surname { display: none; }
 

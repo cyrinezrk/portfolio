@@ -59,6 +59,6 @@ Data : Python, pandas, SQL, MongoDB, KPI & reporting, NLP.
 
 Développement : JavaScript, TypeScript, React, Next.js, Node.js.
 
-Outils : Git, Docker, Linux, AWS, Figma, Shopify.
+Outils : Git, Docker, AWS, Figma, Shopify.
 
 Langues : français, anglais, arabe — courant.
