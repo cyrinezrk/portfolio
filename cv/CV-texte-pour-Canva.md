@@ -55,9 +55,9 @@ Personnages et lieux par reconnaissance d'entités nommées, thèmes par LDA, tr
 
 ## COMPÉTENCES
 
-Data : Python, pandas, SQL, MongoDB, KPI & reporting, NLP.
+Data : SQL, MongoDB, KPI & reporting, pandas.
 
-Développement : JavaScript, TypeScript, React, Next.js, Node.js.
+Développement : Python, JavaScript, TypeScript, React, Next.js, Node.js.
 
 Outils : Git, Docker, AWS, Figma, Shopify.
 
